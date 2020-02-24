@@ -20,23 +20,46 @@ For instructions on what to add under these headers, see the course project assi
 
 ## Planned functionality    
 
+#### Timetable:
+- coursework initial project plan by 02.03
+- Assign issues for every group member 24.2
+- Divide responsibilities 24.2
+
 #### Common:
 - [x] Make a project skeleton
 - [x] Make a use case diagram to clarify user roles
-- [ ] Make the coursework initial project plan by 02.03.
+- [ ] Make the coursework initial project plan by 02.03
 - [ ] Write the first issues into the GitLab issue Board
 - [ ] Assign issues for every group member
+    - division of responsibility areas among group members
 
 #### Frontend:
 - [ ] Simple UI with react for testing functionality
+    - Design Mockup UIs for each page and component
+    - Design components
+        - Divide each page into components
 - [ ] Handle state with redux
+    - Design state management between components
 - [ ] Frontpage, index
+    - Design Mockup UI for the frontpage
+    - Design state management between frontpage components
 - [ ] Product page
+    - Design Mockup UI for the Product page
+    - Design state management between frontpage Product page
 - [ ] Buy page
+    - Design Mockup UI for the Buy page
+    - Design state management between frontpage Buy page
 - [ ] Sell page
+    - Design Mockup UI for the Sell page
+    - Design state management between frontpage Sell page
 - [ ] Manage page
+    - Design Mockup UI for the Manage page
+    - Design state management between frontpage Manage page
 - [ ] Search component
+    - Design Mockup search component
+    - Design state management for the search component
 - [ ] Log in UI
+    - Design Mockup Log in component
 
 #### Backend:
 - [ ] Routes
