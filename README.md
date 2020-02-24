@@ -22,7 +22,7 @@ For instructions on what to add under these headers, see the course project assi
 #### Common:
 - [x] Make a project skeleton
 - [x] Make a use case diagram to clarify user roles
-- [ ]Make the coursework initial project plan by 02.03.
+- [ ] Make the coursework initial project plan by 02.03.
 - [ ] Write the first issues into the GitLab issue Board
 - [ ] Assign issues for every group member
 
@@ -53,6 +53,44 @@ For instructions on what to add under these headers, see the course project assi
 ## Pages and navigation    
 ## Modules your group created in your Node project    
 ## Mongo database and Mongoose schemas    
+
+#### Name of the model
+DB 
+Handles database connection
+Methods:
+- Connect
+- Disconnect
+- Error
+
+#### Schemas
+
+Product schema is connected to user via Original user attribute. The original user is who sold the product to the shopkeeper.
+Image shcema is connected to product schema, as the images the product schema displays are stored as images.
+
+The Role of the user schema in the system is to determine what the user is allowed to do on the website.
+- User
+    - Username, String
+    - Password, String
+    - Id, Number
+    - Role, String
+    - Email, String
+
+The role of the product schema is to give a standard for the products on the website.
+- Product
+    - Category, String
+    - Name, String
+    - Offer price, Number
+    - Sale price, Number
+    - Keywords, [String]
+    - Images, [String]
+    - Id, Number
+    - Original User, String
+
+The role of the image schema is to allow us to store images into our database.
+- Image
+    - data, Buffer
+    - type, String
+
 ## API
 ## React and Redux
 ## Testing    
