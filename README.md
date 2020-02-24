@@ -14,6 +14,7 @@ For instructions on what to add under these headers, see the course project assi
 ## Course project group information   
 #### Group information: 
 - Pietari Pakarinen; 431505; pietari.pakarinen@tuni.fi
+- Lassi Palojärvi; 432220; lassi.palojarvi@tuni.fi
 #### Group name: veeveevee-ryhmä
 #### [GitLab repo URL](https://course-gitlab.tuni.fi/tieta12-2019-2020/veeveevee-ryhma)
 
@@ -92,8 +93,31 @@ The role of the image schema is to allow us to store images into our database.
     - type, String
 
 ## API
+Client will be served from http://localhost:3000/ root directory.
+Api routes will be served from http://localhost:3000/api/ 
+
+These routes are:
+/user
+/product
+
 ## React and Redux
-## Testing    
+React app is going to use Redux for state management
+We will use React router to handle history
+
+Pages:
+/
+/manage
+/login
+/register
+/product/:id
+/buy
+/sell
+
+## Testing
+
+Testing will done with Mocha and chai libraries on backend side.
+Testing on react app will be done with Jest library
+
 ## Project timetable and division of work    
 
 
