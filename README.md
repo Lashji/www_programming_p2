@@ -52,6 +52,7 @@ For instructions on what to add under these headers, see the course project assi
 ![alt text](media/WWWUseCase.jpg "Use case diagram showcasing what different roles can do")
 
 ## Pages and navigation    
+![alt text](media/pages&navigation.png "Navigation")
 ## Modules your group created in your Node project    
 ## Mongo database and Mongoose schemas    
 
