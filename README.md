@@ -12,14 +12,14 @@ The headers that must be present in this document are shown here.
 For instructions on what to add under these headers, see the course project assignment document, [see the coursework assignment document](https://docs.google.com/document/d/1ctG6mURrs1WlqwwPnMOFE_mSIEhZVCjp2XGefAZMdxQ/edit#heading=h.vsanic5plbto)
 
 ## Course project group information   
-Group information: 
+### Group information: 
 - Pietari Pakarinen; 431505; pietari.pakarinen@tuni.fi
-Group name: veeveevee-ryhmä
-GitLab repo URL: [inline-style link](https://course-gitlab.tuni.fi/tieta12-2019-2020/veeveevee-ryhma)
+### Group name: veeveevee-ryhmä
+### GitLab repo URL: [inline-style link](https://course-gitlab.tuni.fi/tieta12-2019-2020/veeveevee-ryhma)
 
 ## Planned functionality    
 
-Use case diagram showcasing what different roles can do:
+### Use case diagram showcasing what different roles can do:
 
 ![alt text](media/WWWUseCase.jpg "Use case diagram showcasing what different roles can do")
 
