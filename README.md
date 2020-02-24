@@ -96,22 +96,22 @@ The role of the image schema is to allow us to store images into our database.
 Client will be served from http://localhost:3000/ root directory.
 Api routes will be served from http://localhost:3000/api/ 
 
-These routes are:
-/user
-/product
+-These routes are:
+    -/user
+    -/product
 
 ## React and Redux
 React app is going to use Redux for state management
 We will use React router to handle history
 
-Pages:
-/
-/manage
-/login
-/register
-/product/:id
-/buy
-/sell
+-Pages:
+    -/
+    -/manage
+    -/login
+    -/register
+    -/product/:id
+    -/buy
+    -/sell
 
 ## Testing
 
