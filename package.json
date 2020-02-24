@@ -1,0 +1,27 @@
+{
+  "name": "tieta12_project2",
+  "version": "1.0.0",
+  "description": "***Welcome to the home of your group's TIETA12, part 2 coursework code and documentation!***",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@course-gitlab.tuni.fi:tieta12-2019-2020/veeveevee-ryhma.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.6",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "helmet": "^3.21.2",
+    "mongoose": "^5.9.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}

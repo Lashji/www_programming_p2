@@ -1,0 +1,8 @@
+{
+    "mongo": {
+        "host": "localhost",
+        "port": "27017",
+        "db": "tieta12_p2"
+    }
+ 
+}
