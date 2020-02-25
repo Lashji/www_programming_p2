@@ -22,14 +22,14 @@ For instructions on what to add under these headers, see the course project assi
 
 #### Timetable:
 - coursework initial project plan by 02.03
-- Assign issues for every group member 24.2
-- Divide responsibilities 24.2
+- Assign issues for every group member 25.2
+- Divide responsibilities 25.2
 
 #### Common:
+- [ ] Make the coursework initial project plan by 02.03
 - [x] Make a project skeleton
 - [x] Make a use case diagram to clarify user roles
-- [ ] Make the coursework initial project plan by 02.03
-- [ ] Write the first issues into the GitLab issue Board
+- [x] Write the first issues into the GitLab issue Board
 - [ ] Assign issues for every group member
     - division of responsibility areas among group members
 
