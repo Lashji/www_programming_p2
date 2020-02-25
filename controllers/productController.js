@@ -1,12 +1,13 @@
 'use strict'
-
+const Product = require("../models/product")
 
 module.exports = {
-	listItems(req, res) {
+	async listItems(req, res) {
+		const items = await Product.find()
+			.exec()
 
-		
-		let list = ["1, 2, 3"]
-		res.json(list)
+		console.log("returning items: ", items)
+		res.json(items)
 	},
 	showItem(req, res) {
 		let id = req.params.id
@@ -15,6 +16,10 @@ module.exports = {
 		})
 	},
 	saveItem(req, res){
+		const data = req.body
+
+		let product = new Product(data)
+		product.save()
 		console.log("saving item, body=",req.body)
 	},
 	updateItem(req, res){
