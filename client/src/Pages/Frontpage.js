@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import './Frontpage.css';
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import { grey } from '@material-ui/core/colors';
+import HomeIcon from '@material-ui/icons/Home';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import SearchIcon from '@material-ui/icons/Search';
+
 function Frontpage() {
     const [search, setSearch] = useState("");
     document.title = 'Löydöt.fi';
@@ -15,31 +23,32 @@ function Frontpage() {
 }
 
 function NavBar(props) {
+    const style = {
+        backgroundColor: "white"
+    }
     return (
         <div>
-            <nav class="crumbs">
-                <ol>
-                    <li class="crumbs"><a href="#">Löydöt.fi</a></li>
-                </ol>
-            </nav>
-            <nav class="menu">
-                <ol>
-                    <li class="menu"><a href="#">Löydöt.fi</a></li>
-                    <li class="menu"><a href="#"></a></li>
-                </ol>
-            </nav>
-            <SearchBar handleSearchChange={props.handleSearchChange} />
+            <AppBar position="static" style={style}>
+                <Toolbar>
+                    <HomeIcon style={{ color: grey[900] }} />
+                    <p style={{ color: grey[900] }}>Löydöt.fi</p>
+                    <SearchBar handleSearchChange={props.handleSearchChange} />
+                </Toolbar>
+            </AppBar>
         </div>
     );
 }
 
 function SearchBar(props) {
+    const style = {
+        backgroundColor: "white"
+    }
     return (
         <div>
-            <label>Hae tuotteita</label>
-            <input id="searchBar" type="text" required name="searchBar"
-                size="25" onChange={props.handleSearchChange} />
-            <input type="submit" value="Hae" />
+            <TextField style={style} id="outlined-search" label={<SearchIcon />} type="search" variant="outlined" />
+            <Button variant="contained" style={style}>
+                Hae tuotteita
+            </Button>
         </div>
     )
 }
