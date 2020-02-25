@@ -35,6 +35,10 @@ const productSchema = new Schema({
 })
 
 
+productSchema.virtual('link').get(function() {
+	return `http://localhost:3000/api/products/${this._id}`
+})
+
 
 const Product = mongoose.model('Product', productSchema)
 
