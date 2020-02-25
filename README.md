@@ -76,7 +76,17 @@ For instructions on what to add under these headers, see the course project assi
 
 ## Pages and navigation    
 ![alt text](media/pages&navigation.png "Navigation")
-## Modules your group created in your Node project    
+## Modules your group created in your Node project
+- Project uses mvc as its project architecture
+- Project will use stripe to handle payments
+
+#### Modules:
+- Router
+- User controller
+- Client controller
+- Product controller
+- Database
+
 ## Mongo database and Mongoose schemas    
 
 #### Name of the model
