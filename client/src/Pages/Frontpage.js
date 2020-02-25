@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
-
+import './Frontpage.css';
 function Frontpage() {
     const [search, setSearch] = useState("");
     document.title = 'Löydöt.fi';
@@ -25,7 +19,7 @@ function NavBar(props) {
         <div>
             <nav class="crumbs">
                 <ol>
-                    <li class="crumb"><a href="#">Löydöt.fi</a></li>
+                    <li class="crumbs"><a href="#">Löydöt.fi</a></li>
                 </ol>
             </nav>
             <nav class="menu">
