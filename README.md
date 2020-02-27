@@ -15,6 +15,7 @@ For instructions on what to add under these headers, see the course project assi
 #### Group information: 
 - Pietari Pakarinen; 431505; pietari.pakarinen@tuni.fi
 - Lassi Palojärvi; 432220; lassi.palojarvi@tuni.fi
+- Iiro Sinisalo; 425196; iiro.sinisalo@tuni.fi
 #### Group name: veeveevee-ryhmä
 #### [GitLab repo URL](https://course-gitlab.tuni.fi/tieta12-2019-2020/veeveevee-ryhma)
 
@@ -100,7 +101,7 @@ Methods:
 #### Schemas
 
 Product schema is connected to user via Original user attribute. The original user is who sold the product to the shopkeeper.
-Image shcema is connected to product schema, as the images the product schema displays are stored as images.
+Image schema is connected to product schema, as the images the product schema displays are stored as images.
 
 The Role of the user schema in the system is to determine what the user is allowed to do on the website.
 - User

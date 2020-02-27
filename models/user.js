@@ -26,7 +26,7 @@ const userSchema = new Schema({
 		unique: true,
 		trim: true,
 		minLength: schemaDefaults.name.minLength,
-		maxlength: schemaDefaults.name.maxLength
+		maxLength: schemaDefaults.name.maxLength
 	},
 	email: {
 		type:String,
@@ -50,7 +50,7 @@ const userSchema = new Schema({
 	},
 	 role: {
 		 type: String,
-		 trime: true,
+		 trim: true,
 		 lowercase: true,
 		 enum: schemaDefaults.role.values,
 		 defaul: schemaDefaults.role.defaultValue
