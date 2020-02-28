@@ -189,5 +189,18 @@ Testing on react app will be done with Jest library
 
 ## Project timetable and division of work    
 
+Division of work:
+- Backend:
+    - Mostly Lassi
+    - Iiro most likely will help, Pietari might
+- Frontend
+    - Pietari and Iiro will work on seperate pages as they see fit
+- Testing
+    - Will be done later in the project by whoever has the time
+
+Timetable:
+First priority is to get a working MVP of frontpage and sign in and sign up for frontend
+Routes for backend are done. Images and passporting are in the near future.
+We're currently thinking about improving project architecture.
 
 *Good luck and happy WWWdevvin’!*
