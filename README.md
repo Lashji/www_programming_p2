@@ -76,34 +76,43 @@ For instructions on what to add under these headers, see the course project assi
 ![alt text](media/WWWUseCase.jpg "Use case diagram showcasing what different roles can do")
 
 ## Pages and navigation    
+#### Page architecture
 ![alt text](media/pages&navigation.png "Navigation")
 
 Page architecture for the webstore
 
+#### Frontpage, Löydöt.fi
 ![alt text](media/tieta12proto-frontpage.jpg "The frontpage of Löydöt.fi")
 
 The frontpage of our webstore, Löydöt.fi. It has a search bar and images of products the shopkeeper has put up for sale.
 
+#### Product page
 ![alt text](media/tieta12proto-item.jpg "The page the customer sees when he selects an item.")
 
 On an item page, the customer can view images of the product and read a description of it. There are buttons for buying the page and returning.
 
+#### Purchasing page
 ![alt text](media/tieta12proto-Buy.jpg "The page the customer sees when buying products")
 
 The buy page is the page the customer sees when he clicks the buy button on a products' page. From the buy page the customer can buy the product.
 
+
+#### Sell page
 ![alt text](media/tieta12proto-seller.jpg "The page the customer sees when selling products")
 
 The sell page has a form the seller has to fill to sell his product to the shopkeeper. On the sell page he can make an offer using the information he put into the form.
 
+#### Sign in
 ![alt text](media/tieta12proto-Sign_in.jpg "The page for signing in to the application")
 
 The page for signing in to the application.
 
+#### Sign up
 ![alt text](media/tieta12proto-Sign_up.jpg "The page for registeing to the application")
 
 The page for registeing to the application.
 
+#### Shopkeepers' view
 ![alt text](media/tieta12proto-Shopkeeper.jpg "The page from which the shopkeeper can view, accept and decline offers")
 
 The page from which the shopkeeper can view, accept and decline offers.
@@ -189,5 +198,18 @@ Testing on react app will be done with Jest library
 
 ## Project timetable and division of work    
 
+Division of work:
+- Backend:
+    - Mostly Lassi
+    - Iiro most likely will help, Pietari might
+- Frontend
+    - Pietari and Iiro will work on seperate pages as they see fit
+- Testing
+    - Will be done later in the project by whoever has the time
+
+Timetable:
+First priority is to get a working MVP of frontpage and sign in and sign up for frontend
+Routes for backend are done. Images and passporting are in the near future.
+We're currently thinking about improving project architecture.
 
 *Good luck and happy WWWdevvin’!*
