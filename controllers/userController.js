@@ -24,7 +24,7 @@ module.exports = {
 				return res.status(400).json({
 					message: "Something is not right",
 					user: user,
-				})
+				});
 			}
 
 			req.login(user, { session: false }, (err) => {
@@ -32,7 +32,7 @@ module.exports = {
 					res.send(err);
 				}
 
-				const token = jwt.sign({ email: user.email }, jwtConfig.key, { algorithm: "HS256" });
+				const token = jwt.sign({ id: user.id }, jwtConfig.key, { algorithm: "HS256" });
 				return res.json({ token });
 			})
 		})(req, res, next);

@@ -3,8 +3,9 @@
 const express = require("express")
 const router = express.Router()
 const ProductController = require("../controllers/productController")
+const auth = require("../middleware/auth");
 
-
+router.use("/", auth.ensureAuthenticated)
 
 router.get("/", ProductController.listItems)
 router.get("/:id", ProductController.showItem) //TODO: Add Regex for id 
