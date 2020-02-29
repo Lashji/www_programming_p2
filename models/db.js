@@ -4,7 +4,7 @@
 const mongoose = require("mongoose")
 
 const connectDB = (dbConfig) => {
- 
+
     mongoose
         .connect(`mongodb://${dbConfig.host}:${dbConfig.port}/${dbConfig.db}`, {
             useNewUrlParser: true,
@@ -19,7 +19,7 @@ const connectDB = (dbConfig) => {
 
             mongoose.connection.on('reconnectFailed', handleCriticalError);
         })
-        .catch(handleCriticalError);   
+        .catch(handleCriticalError);
 }
 
 const handleCriticalError = (err) => {
@@ -32,4 +32,4 @@ const disconnectDB = () => {
     mongoose.disconnect();
 }
 
-module.exports = {connectDB, disconnectDB}
+module.exports = { connectDB, disconnectDB }
