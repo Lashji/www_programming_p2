@@ -1,10 +1,16 @@
 "use strict";
 
-const Image = require("../models/image");
+const mongoose = require("mongoose");
+const { Readable } = require("stream");
+let Image;
+// We need to have an active mongoose connection before we can initialize the Image model.
+mongoose.connection.once("open", function () {
+    Image = require("../models/image");
+})
 
 module.exports = {
     async loadImage(req, res) {
-        let imageObject = await Image.loadImage(req.params.id);
+        let imageObject = await Image.findById(req.params.id);
         let imageStream = imageObject.read();
         if (imageStream) {
             res.setHeader("Content-Type", "image/jpeg");
@@ -17,8 +23,18 @@ module.exports = {
 
     async saveImage(req, res) {
         if (req.file) {
-            Image.saveImage(req.file.buffer, req.file.originalname);
-            res.sendStatus(200);
+            const fileStream = new Readable();
+            fileStream._read = () => { };
+            fileStream.push(req.file.buffer);
+            fileStream.push(null);
+            const image = new Image({ filename: req.file.originalname });
+            image.write(fileStream, (error, file) => {
+                if (error) {
+                    res.send(error);
+                } else {
+                    res.send(file);
+                }
+            });
         }
         else {
             res.sendStatus(404);
