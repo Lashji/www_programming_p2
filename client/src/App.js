@@ -8,6 +8,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import SignInSide from './Pages/SignIn';
 
 function App() {
   return (

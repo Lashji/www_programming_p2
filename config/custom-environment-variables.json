@@ -1,4 +1,7 @@
 {
+    "jwt": {
+        "key": "SECRET_KEY"
+    },
     "session": {
         "secret": "SESSION_SECRET"
     },

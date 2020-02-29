@@ -7,4 +7,7 @@ const UserController = require("../controllers/userController")
 // router
 //     .route("/register")
 
+router
+    .post("/login", UserController.authenticateUser)
+
 module.exports = router

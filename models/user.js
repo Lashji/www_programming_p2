@@ -53,7 +53,7 @@ const userSchema = new Schema({
 		 trim: true,
 		 lowercase: true,
 		 enum: schemaDefaults.role.values,
-		 defaul: schemaDefaults.role.defaultValue
+		 default: schemaDefaults.role.defaultValue
 	 }
 })
 
@@ -71,7 +71,8 @@ userSchema.virtual('isUser').get(function() {
 	return this.role ==='user'
 })
 
-userSchema.methods.checkPassword = async (password) => {
+// Cannot use this inside an anonymous function!!
+userSchema.methods.checkPassword = async function(password) {
 	return await bcrypt.compare(password, this.password)
 }
 

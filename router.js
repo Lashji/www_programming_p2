@@ -5,7 +5,7 @@ const ProductRouter = require("./routes/productRouter")
 const UserRouter = require("./routes/userRouter")
 
 module.exports = function (app) {
-    app.use("/", ClientRouter)
     app.use("/api/products/", ProductRouter)
     app.use("/api/users/", UserRouter)
+    app.use("/", ClientRouter)
 }
