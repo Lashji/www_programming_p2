@@ -1,27 +1,26 @@
 'use strict';
 
 const mongoose = require("mongoose");
-const Grid = require("gridfs-stream");
-let GridFS;
+const { Readable } = require("stream");
+const { createModel } = require("mongoose-gridfs");
+let Image;
 mongoose.connection.once("open", function () {
-    GridFS = Grid(mongoose.connection.db, mongoose.mongo);
+    Image = createModel({
+        modelName: "images",
+        bucketName: "images",
+    });
 });
-const collection = "images";
 
 module.exports = {
-    saveImage(fileStream, filename) {
-        let writeStream = GridFS.createWriteStream({
-            filename: filename,
-            root: collection,
-        });
-        fileStream.pipe(writeStream);
+    saveImage(fileBuffer, filename) {
+        const fileStream = new Readable();
+        fileStream._read = () => { };
+        fileStream.push(fileBuffer);
+        fileStream.push(null);
+        Image.write({ filename: filename }, fileStream);
     },
 
-    loadImage(id) {
-        let readStream = GridFS.createReadStream({
-            _id: id,
-            root: collection,
-        });
-        return readStream;
+    async loadImage(id) {
+        return Image.findById(id);
     },
 }

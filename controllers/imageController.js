@@ -4,7 +4,8 @@ const Image = require("../models/image");
 
 module.exports = {
     async loadImage(req, res) {
-        let imageStream = await Image.loadImage(req.params.id);
+        let imageObject = await Image.loadImage(req.params.id);
+        let imageStream = imageObject.read();
         if (imageStream) {
             res.setHeader("Content-Type", "image/jpeg");
             imageStream.pipe(res);
@@ -15,8 +16,8 @@ module.exports = {
     },
 
     async saveImage(req, res) {
-        if (req.body) {
-            Image.saveImage(req);
+        if (req.file) {
+            Image.saveImage(req.file.buffer, req.file.originalname);
             res.sendStatus(200);
         }
         else {
