@@ -39,9 +39,11 @@ function App() {
               <h1 style={{ color: grey[900] }}>Löydöt.fi</h1>
               </Link>
                   <SearchBar />
-                  <Button variant="outlined" size="large">
-                    Sign up
-                  </Button>
+                  <Link to="/">
+                    <Button variant="outlined" size="large">
+                      Sign up
+                    </Button>
+                  </Link>
                   <Link to="/Sign_In">
                     <Button variant="outlined" size="large">
                       Sign in

@@ -107,7 +107,7 @@ The page for signing in to the application.
 #### Sign up
 ![alt text](media/tieta12proto-Sign_up.jpg "The page for registeing to the application")
 
-The page for registeing to the application.
+The page for registering to the application.
 
 #### Shopkeepers' view
 ![alt text](media/tieta12proto-Shopkeeper.jpg "The page from which the shopkeeper can view, accept and decline offers")
