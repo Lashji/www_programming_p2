@@ -22,16 +22,13 @@ For instructions on what to add under these headers, see the course project assi
 ## Planned functionality   
 
 #### Timetable:
-- coursework initial project plan by 02.03
-- Assign issues for every group member 25.2
-- Divide responsibilities 25.2
 
 #### Common:
-- [ ] Make the coursework initial project plan by 02.03
+- [x] Make the coursework initial project plan by 02.03
 - [x] Make a project skeleton
 - [x] Make a use case diagram to clarify user roles
 - [x] Write the first issues into the GitLab issue Board
-- [ ] Assign issues for every group member
+- [x] Assign issues for every group member
     - division of responsibility areas among group members
 
 #### Frontend:
@@ -42,7 +39,7 @@ For instructions on what to add under these headers, see the course project assi
 - [ ] Handle state with redux
     - Design state management between components
 - [ ] Frontpage, index
-    - Design Mockup UI for the frontpage
+    [x] Design Mockup UI for the frontpage
     - Design state management between frontpage components
 - [ ] Product page
     - Design Mockup UI for the Product page
@@ -57,9 +54,9 @@ For instructions on what to add under these headers, see the course project assi
     - Design Mockup UI for the Manage page
     - Design state management between frontpage Manage page
 - [ ] Search component
-    - Design Mockup search component
+    [x] Design Mockup search component
     - Design state management for the search component
-- [ ] Log in UI
+- [x] Log in UI
     - Design Mockup Log in component
 
 #### Backend:
@@ -185,8 +182,8 @@ We will use React router to handle history
 - Pages:
     - /
     - /manage
-    - /login
-    - /register
+    - /sign_in
+    - /sign_up
     - /product/:id
     - /buy
     - /sell
@@ -208,7 +205,7 @@ Division of work:
     - Will be done later in the project by whoever has the time
 
 Timetable:
-First priority is to get a working MVP of frontpage and sign in and sign up for frontend
+First priority is to get a working MVP of frontpage and sign in and sign up for frontend.
 Routes for backend are done. Images and passporting are in the near future.
 We're currently thinking about improving project architecture.
 
