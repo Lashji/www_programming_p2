@@ -39,7 +39,7 @@ For instructions on what to add under these headers, see the course project assi
 - [ ] Handle state with redux
     - Design state management between components
 - [ ] Frontpage, index
-    [x] Design Mockup UI for the frontpage
+    - [x] Design Mockup UI for the frontpage
     - Design state management between frontpage components
 - [ ] Product page
     - Design Mockup UI for the Product page
@@ -54,7 +54,7 @@ For instructions on what to add under these headers, see the course project assi
     - Design Mockup UI for the Manage page
     - Design state management between frontpage Manage page
 - [ ] Search component
-    [x] Design Mockup search component
+    - [x] Design Mockup search component
     - Design state management for the search component
 - [x] Log in UI
     - Design Mockup Log in component
