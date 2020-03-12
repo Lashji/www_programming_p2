@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import './Pages/SignIn.js';
 import SignInSide from './Pages/SignIn';
+import SignUp from './Pages/SignUp';
 import 'typeface-roboto';
 import Frontpage from './Pages/Frontpage.js'
 import AppBar from '@material-ui/core/AppBar'
@@ -25,33 +26,33 @@ function App() {
     backgroundColor: "white",
     textAlign: 'center',
     margin: 'auto'
-}
+  }
   return (
     <Router>
       <div>
-      <div style={style}>
+        <div style={style}>
           <AppBar position="static" style={style}>
-              <Toolbar>
+            <Toolbar>
               <Link to="/">
                 <HomeIcon style={{ color: grey[900] }} />
               </Link>
               <Link to="/">
-              <h1 style={{ color: grey[900] }}>Löydöt.fi</h1>
+                <h1 style={{ color: grey[900] }}>Löydöt.fi</h1>
               </Link>
-                  <SearchBar />
-                  <Link to="/">
-                    <Button variant="outlined" size="large">
-                      Sign up
+              <SearchBar />
+              <Link to="/Sign_Up">
+                <Button variant="outlined" size="large">
+                  Sign up
                     </Button>
-                  </Link>
-                  <Link to="/Sign_In">
-                    <Button variant="outlined" size="large">
-                      Sign in
+              </Link>
+              <Link to="/Sign_In">
+                <Button variant="outlined" size="large">
+                  Sign in
                     </Button>
-                  </Link>
-              </Toolbar>
+              </Link>
+            </Toolbar>
           </AppBar>
-      </div>
+        </div>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -60,7 +61,7 @@ function App() {
             <SignInSide />
           </Route>
           <Route path="/Sign_up">
-            
+            <SignUp />
           </Route>
           <Route path="/">
             <Frontpage />
@@ -74,15 +75,15 @@ function App() {
 function SearchBar() {
   const [search, setSearch] = useState("");
   const handleSearchChange = (e) => {
-      setSearch(e.target.value);
+    setSearch(e.target.value);
   }
   const style = {
-      backgroundColor: "white"
+    backgroundColor: "white"
   }
   return (
-      <div>
-          <TextField style={style} id="outlined-search" label={<SearchIcon />} type="search" variant="outlined" onChange={handleSearchChange} />
-      </div>
+    <div>
+      <TextField style={style} id="outlined-search" label={<SearchIcon />} type="search" variant="outlined" onChange={handleSearchChange} />
+    </div>
   )
 
 }
