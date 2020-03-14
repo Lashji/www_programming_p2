@@ -1,10 +1,9 @@
-
 const fs = require("fs")
-const path= require("path")
+const path = require("path")
 const Product = require("../models/product")
 const User = require("../models/user")
 
-const startSetup =  (config) => {
+const startSetup = (config) => {
 
     console.log("starting setup with config: ", config)
     createData()
@@ -22,20 +21,27 @@ const createData = async () => {
 
         console.log("created data: ", data)
     } catch (error) {
-        console.error("Error when creating dummy data: ", error)        
+        console.error("Error when creating dummy data: ", error)
     }
 }
 
 
 const createUsers = async (config) => {
-    const admin = await User.findOne({role: 'admin'}).exec()
-    console.log("admin user exists in db:",admin)
-    if (admin)
-        return
+    const admin = await User.findOne({
+        role: 'admin'
+    }).exec()
+    console.log("admin user exists in db:", admin)
 
-    
+    if (admin) {
+        console.log("adming already found... returning")
+        return
+    }
+
     const user = new User(config)
+    user.role = 'admin'
+
     try {
+        console.log('Trying to save new admin into db')
         await user.save()
     } catch (error) {
         console.error("error when trying to add admin: ", error)
