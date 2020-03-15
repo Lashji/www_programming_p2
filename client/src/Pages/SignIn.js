@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignInSide() {
+function SignInSide() {
   const classes = useStyles();
 
   return (
@@ -115,7 +115,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/Sign_Up" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -129,3 +129,5 @@ export default function SignInSide() {
     </Grid>
   );
 }
+
+export default SignInSide;

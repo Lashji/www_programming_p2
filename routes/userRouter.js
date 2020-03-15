@@ -9,5 +9,6 @@ const UserController = require("../controllers/userController")
 
 router
     .post("/login", UserController.authenticateUser)
+    .post("/sign-up", UserController.createUser)
 
 module.exports = router

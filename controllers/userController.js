@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const config = require("config");
 const jwtConfig = config.get("jwt");
+const User = require("../models/user");
 
 
 module.exports = {
@@ -22,7 +23,7 @@ module.exports = {
 		passport.authenticate("local", { session: false }, (err, user, info) => {
 			if (err || !user) {
 				return res.status(400).json({
-					message: "Something is not right",
+					error: "Login failed, please check username and password",
 					user: user,
 				});
 			}
@@ -36,5 +37,20 @@ module.exports = {
 				return res.json({ token });
 			})
 		})(req, res, next);
+	},
+
+	async createUser(req, res, next) {
+		let user = await User.find({ email: req.email });
+		if (user) {
+			res.status(409).json({ error: "Email already in use" });
+		}
+
+		user = new User();
+		user.name = req.name;
+		user.email = req.email;
+		user.password = req.password;
+		await user.save();
+
+		res.status(200).json({ message: "Registration succesful, you can now login" });
 	}
 }

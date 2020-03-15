@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import './Pages/SignIn.js';
-import SignInSide from './Pages/SignIn';
+import SignInContainer from './Pages/SignInContainer';
+import SignInSide from "./Pages/SignIn";
 import SignUp from './Pages/SignUp';
 import 'typeface-roboto';
 import Frontpage from './Pages/Frontpage.js'
@@ -58,7 +59,7 @@ function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/Sign_in">
-            <SignInSide />
+            <SignInContainer />
           </Route>
           <Route path="/Sign_up">
             <SignUp />
