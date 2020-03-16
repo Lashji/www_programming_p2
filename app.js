@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 setup(config.get('admin'))
 
 
-
 require("./router")(app)
 
 app.listen(PORT, () => {

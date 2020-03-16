@@ -40,17 +40,18 @@ module.exports = {
 	},
 
 	async createUser(req, res, next) {
-		let user = await User.find({ email: req.email });
+		let user = await User.findOne({ email: req.body.email });
 		if (user) {
 			res.status(409).json({ error: "Email already in use" });
 		}
+		else {
+			user = new User();
+			user.name = req.body.name;
+			user.email = req.body.email;
+			user.password = req.body.password;
+			await user.save();
 
-		user = new User();
-		user.name = req.name;
-		user.email = req.email;
-		user.password = req.password;
-		await user.save();
-
-		res.status(200).json({ message: "Registration succesful, you can now login" });
+			res.status(200).json({ message: "Registration succesful, you can now login" });
+		}
 	}
 }

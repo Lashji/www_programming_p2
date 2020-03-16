@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
-import './Pages/SignIn.js';
-import SignInContainer from './Pages/SignInContainer';
-import SignInSide from "./Pages/SignIn";
-import SignUp from './Pages/SignUp';
+import './signin/SignIn.js';
+import SignInContainer from './signin/SignInContainer';
+import SignUpContainer from "./signup/SignUpContainer";
 import 'typeface-roboto';
-import Frontpage from './Pages/Frontpage.js'
+import Frontpage from './frontpage/Frontpage.js'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { grey } from '@material-ui/core/colors';
@@ -62,7 +61,7 @@ function App() {
             <SignInContainer />
           </Route>
           <Route path="/Sign_up">
-            <SignUp />
+            <SignUpContainer />
           </Route>
           <Route path="/">
             <Frontpage />

@@ -46,8 +46,31 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
     const classes = useStyles();
+
+    const [formInput, setFormInput] = React.useReducer(
+      (state, newState) => ({ ...state, ...newState }),
+      {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      }
+    );
+  
+    function handleChange(event) {
+      // A way to handle multiple inputs with hooks
+      const target = event.target;
+      const value = event.target.value;
+      const name = event.target.name;
+      setFormInput({ [name]: value });
+    }
+  
+    function handleSubmit(event) {
+      event.preventDefault();
+      props.signUp(formInput.firstName + " " + formInput.lastName, formInput.email, formInput.password);
+    }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -59,13 +82,15 @@ export default function SignUp() {
                 <Typography component="h1" variant="h5">
                     Sign up
         </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form} noValidate onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 autoComplete="fname"
                                 name="firstName"
                                 variant="outlined"
+                                value={formInput.firstName}
+                                onChange={handleChange}
                                 required
                                 fullWidth
                                 id="firstName"
@@ -76,6 +101,8 @@ export default function SignUp() {
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 variant="outlined"
+                                value={formInput.lastName}
+                                onChange={handleChange}
                                 required
                                 fullWidth
                                 id="lastName"
@@ -87,6 +114,8 @@ export default function SignUp() {
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
+                                value={formInput.email}
+                                onChange={handleChange}
                                 required
                                 fullWidth
                                 id="email"
@@ -98,6 +127,8 @@ export default function SignUp() {
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
+                                value={formInput.password}
+                                onChange={handleChange}
                                 required
                                 fullWidth
                                 name="password"

@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import SignInSide from "./SignIn";
-import { userOperations } from "./duck";
+import { signInOperations } from "./duck";
 
 const mapStateToProps = (state) => {
-    const { token, signingIn, signInError } = state.user;
+    const { token, signingIn, signInError } = state.signIn;
     return {
         token,
         signingIn,
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     const signIn = (email, password) => {
-        dispatch(userOperations.signIn(email, password));
+        dispatch(signInOperations.signIn(email, password));
     };
 
     return { signIn };

@@ -57,8 +57,29 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SignInSide() {
+function SignInSide(props) {
   const classes = useStyles();
+
+  const [formInput, setFormInput] = React.useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    {
+      email: "",
+      password: "",
+    }
+  );
+
+  function handleChange(event) {
+    // A way to handle multiple inputs with hooks
+    const target = event.target;
+    const value = event.target.value;
+    const name = event.target.name;
+    setFormInput({ [name]: value });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    props.signIn(formInput.email, formInput.password);
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -72,10 +93,12 @@ function SignInSide() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
+              value={formInput.email}
+              onChange={handleChange}
               required
               fullWidth
               id="email"
@@ -89,6 +112,8 @@ function SignInSide() {
               margin="normal"
               required
               fullWidth
+              value={formInput.password}
+              onChange={handleChange}
               name="password"
               label="Password"
               type="password"

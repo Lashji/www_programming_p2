@@ -1,29 +1,5 @@
 import creators from "./actions";
 
-function signIn(email, password) {
-    return dispatch => {
-        dispatch(creators.requestSignIn());
-        return fetch("/api/users/login", {
-            method: "POST",
-            headers: new Headers({
-                "Content-Type": "application/json",
-            }),
-            body: JSON.stringify({ email: email, password: password })
-        })
-            .then(response => {
-                return response.json();
-            })
-            .then(json => {
-                if (json.token) {
-                    dispatch(creators.signInSuccess("Bearer " + json.token));
-                }
-                else if (json.error) {
-                    dispatch(creators.signInError(json.error));
-                }
-            });
-    }
-}
-
 function signUp(name, email, password) {
     return dispatch => {
         dispatch(creators.requestSignUp());
@@ -49,6 +25,5 @@ function signUp(name, email, password) {
 }
 
 export default {
-    signIn,
     signUp,
 }

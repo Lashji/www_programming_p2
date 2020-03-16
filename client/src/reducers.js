@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import userReducer from "./Pages/duck";
+import signInReducer from "./app/signin/duck";
+import signUpReducer from "./app/signup/duck";
 
 const rootReducer = combineReducers({
-    user: userReducer,
+    signIn: signInReducer,
+    signUp: signUpReducer,
 });
 
 export default rootReducer;

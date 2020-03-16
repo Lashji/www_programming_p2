@@ -1,0 +1,9 @@
+const REQUEST_SIGN_UP = "REQUEST_SIGN_UP";
+const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
+const SIGN_UP_ERROR = "SIGN_UP_ERROR";
+
+export default {
+    REQUEST_SIGN_UP,
+    SIGN_UP_SUCCESS,
+    SIGN_UP_ERROR,
+}
