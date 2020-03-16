@@ -3,7 +3,7 @@ import SignUp from "./SignUp";
 import { signUpOperations } from "./duck";
 
 const mapStateToProps = (state) => {
-    const { signUpMessage, signingUp, signUpError } = state.signIn;
+    const { signUpMessage, signingUp, signUpError } = state.signUp;
     return {
         signUpMessage,
         signingUp,

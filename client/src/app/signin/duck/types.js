@@ -1,9 +1,11 @@
 const REQUEST_SIGN_IN = "REQUEST_SIGN_IN";
 const RECEIVE_TOKEN = "RECEIVE_TOKEN";
 const SIGN_IN_ERROR = "SIGN_IN_ERROR";
+const LOG_OUT = "LOG_OUT"
 
 export default {
     REQUEST_SIGN_IN,
     RECEIVE_TOKEN,
     SIGN_IN_ERROR,
+    LOG_OUT,
 }

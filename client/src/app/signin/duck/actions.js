@@ -20,8 +20,15 @@ function signInError(error) {
     }
 }
 
+function logOut() {
+    return {
+        type: types.LOG_OUT,
+    }
+}
+
 export default {
     requestSignIn,
     receiveToken,
     signInError,
+    logOut,
 };

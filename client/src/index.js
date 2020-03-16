@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './app/App';
+import AppContainer from './app/AppContainer';
 import * as serviceWorker from './serviceWorker';
 
 import thunk from "redux-thunk";
@@ -19,7 +19,7 @@ const store = createStore(rootReducer, composeEnhancers(middleware));
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <AppContainer />
     </Provider>,
     document.getElementById('root')
 );

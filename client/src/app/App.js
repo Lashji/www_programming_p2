@@ -19,13 +19,48 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { propertiesParser } from 'config/parser';
 
+function SignInSignUp() {
+  return (
+    <div>
+      <Link to="/sign_up">
+        <Button variant="outlined" size="large">
+          Sign up
+        </Button>
+      </Link>
+      <Link to="/sign_in">
+        <Button variant="outlined" size="large">
+          Sign in
+        </Button>
+      </Link>
+    </div>
+  )
+}
 
-function App() {
+function LogOut(props) {
+  return (
+    <Button variant="outlined" size="large" onClick={props.onClick}>
+      Log Out
+    </Button>
+  )
+}
+
+function App(props) {
   const style = {
     backgroundColor: "white",
     textAlign: 'center',
     margin: 'auto'
+  }
+
+  let buttons;
+  if (props.token) {
+    buttons = <LogOut
+      onClick={props.logOut}
+    />;
+  }
+  else {
+    buttons = <SignInSignUp />;
   }
   return (
     <Router>
@@ -40,16 +75,7 @@ function App() {
                 <h1 style={{ color: grey[900] }}>Löydöt.fi</h1>
               </Link>
               <SearchBar />
-              <Link to="/Sign_Up">
-                <Button variant="outlined" size="large">
-                  Sign up
-                    </Button>
-              </Link>
-              <Link to="/Sign_In">
-                <Button variant="outlined" size="large">
-                  Sign in
-                    </Button>
-              </Link>
+              {buttons}
             </Toolbar>
           </AppBar>
         </div>
@@ -57,10 +83,9 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/Sign_in">
-            <SignInContainer />
+          <Route path="/sign_in" component={SignInContainer}>
           </Route>
-          <Route path="/Sign_up">
+          <Route path="/sign_up">
             <SignUpContainer />
           </Route>
           <Route path="/">

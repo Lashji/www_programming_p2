@@ -30,12 +30,6 @@ function signInReducer(state = INITIAL_STATE, action) {
                 token: action.token,
             }
         }
-        case types.LOG_OUT: {
-            return {
-                ...state,
-                token: null,
-            }
-        }
         default: {
             return state;
         }

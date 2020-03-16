@@ -58,6 +58,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function SignInSide(props) {
+  const history = props.history;
   const classes = useStyles();
 
   const [formInput, setFormInput] = React.useReducer(
@@ -78,7 +79,7 @@ function SignInSide(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    props.signIn(formInput.email, formInput.password);
+    props.signIn(formInput.email, formInput.password, history);
   }
 
   return (
