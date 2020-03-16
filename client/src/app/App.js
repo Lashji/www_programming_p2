@@ -19,7 +19,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { propertiesParser } from 'config/parser';
 
 function SignInSignUp() {
   return (

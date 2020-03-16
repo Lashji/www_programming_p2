@@ -71,7 +71,6 @@ function SignInSide(props) {
 
   function handleChange(event) {
     // A way to handle multiple inputs with hooks
-    const target = event.target;
     const value = event.target.value;
     const name = event.target.name;
     setFormInput({ [name]: value });
