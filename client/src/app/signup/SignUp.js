@@ -12,6 +12,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert"
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function Copyright() {
     return (
@@ -68,7 +74,7 @@ export default function SignUp(props) {
   
     function handleSubmit(event) {
       event.preventDefault();
-      props.signUp(formInput.firstName + " " + formInput.lastName, formInput.email, formInput.password);
+      props.signUp(formInput.firstName + " " + formInput.lastName, formInput.email, formInput.password, props.history);
     }
 
     return (
@@ -162,6 +168,11 @@ export default function SignUp(props) {
                     </Grid>
                 </form>
             </div>
+            <Snackbar open={props.signUpError}>
+              <Alert severity="error">
+                {props.signUpError}
+              </Alert>
+            </Snackbar>
             <Box mt={5}>
                 <Copyright />
             </Box>

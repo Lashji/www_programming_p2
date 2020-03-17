@@ -11,12 +11,8 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    const signUp = (name, email, password) => {
-        dispatch(signUpOperations.signUp(name, email, password));
-    };
-
-    return { signUp };
+const mapDispatchToProps = {
+    signUp: signUpOperations.signUp,
 };
 
 const SignUpContainer = connect(

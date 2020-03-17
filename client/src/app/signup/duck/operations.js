@@ -1,6 +1,6 @@
 import creators from "./actions";
 
-function signUp(name, email, password) {
+function signUp(name, email, password, history) {
     return dispatch => {
         dispatch(creators.requestSignUp());
         return fetch("/api/users/sign-up", {
@@ -16,6 +16,7 @@ function signUp(name, email, password) {
             .then(json => {
                 if (json.message) {
                     dispatch(creators.signUpSuccess(json.message));
+                    history.push("/sign_in");
                 }
                 else if (json.error) {
                     dispatch(creators.signUpError(json.error));

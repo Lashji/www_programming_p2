@@ -80,15 +80,16 @@ function App(props) {
         </div>
 
         {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+            renders the first one that matches the current URL.
+            The component to be rendered has to be passed in the
+            component property, to have access to props like
+            history. */}
         <Switch>
           <Route path="/sign_in" component={SignInContainer}>
           </Route>
-          <Route path="/sign_up">
-            <SignUpContainer />
+          <Route path="/sign_up" component={SignUpContainer}>
           </Route>
-          <Route path="/">
-            <Frontpage />
+          <Route path="/" component={Frontpage}>
           </Route>
         </Switch>
       </div>

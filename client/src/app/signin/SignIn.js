@@ -12,6 +12,12 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert"
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function Copyright() {
   return (
@@ -133,6 +139,11 @@ function SignInSide(props) {
             >
               Sign In
             </Button>
+            <Snackbar open={props.signInError} anchorOrigin={{ vertical: "bottom", horizontal: "right" }}>
+              <Alert severity="error">
+                {props.signInError}
+              </Alert>
+            </Snackbar>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
