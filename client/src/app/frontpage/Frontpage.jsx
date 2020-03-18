@@ -75,20 +75,22 @@ export default function Frontpage(props) {
 
                 <Container className={classes.cardGrid} maxWidth="md">
                     <Grid container spacing={4}>
-                        {props.products.map(card => (
-                            <Grid item key={card} xs={12} sm={6} md={4}>
+                        {props.products.map(product => {
+                            let img = product.image?product.image:"https://source.unsplash.com/random"
+                            return (
+                              <Grid item key={product._id} xs={12} sm={6} md={4}>
                                 <Card className={classes.card}>
                                     <CardMedia
                                         className={classes.cardMedia}
-                                        image="https://source.unsplash.com/random"
+                                        image={img}
                                         title="Image title"
                                     />
                                     <CardContent className={classes.cardContent}>
                                         <Typography gutterBottom variant="h5" component="h2">
-                                            Heading
+                                            {product.name}
                                         </Typography>
                                         <Typography>
-                                            This is a media card. You can use this section to describe the content.
+                                            {product.description}
                                          </Typography>
                                     </CardContent>
                                     <CardActions>
@@ -101,7 +103,10 @@ export default function Frontpage(props) {
                                     </CardActions>
                                 </Card>
                             </Grid>
-                        ))}
+                          )
+                        }
+
+                        )}
                     </Grid>
                 </Container>
             </main>

@@ -22,14 +22,14 @@ function productReducer(state = INITIAL_STATE, action) {
                 ...state,
                 isFetching: false,
                 didInvalidate: false,
-                products: action.data.products,
-                filtered_products: action.data.products
+                products: action.data,
+                filtered_products: action.data
             })
         }
         case types.FILTER_PRODUCTS: {
             return Object.assign({}, state, {
                 ...state,
-                filtered_products: action.data.filtered_products
+                filtered_products: action.data
             })
         }
         case types.ERROR: {
@@ -37,7 +37,7 @@ function productReducer(state = INITIAL_STATE, action) {
                 ...state,
                 isFetching: false,
                 didInvalidate: true,
-                error: action.error
+                error: action.data
             })
         }
         default: {
