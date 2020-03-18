@@ -69,7 +69,7 @@ export default function Frontpage() {
             <CssBaseline />
             <main>
                 {/* Hero unit */}
-                <div className={classes.heroContent}>
+                {/* <div className={classes.heroContent}>
                     <Container maxWidth="sm">
                         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                             Album layout
@@ -94,7 +94,7 @@ export default function Frontpage() {
                             </Grid>
                         </div>
                     </Container>
-                </div>
+                </div> */}
                 <Container className={classes.cardGrid} maxWidth="md">
                     {/* End hero unit */}
                     <Grid container spacing={4}>
@@ -109,18 +109,18 @@ export default function Frontpage() {
                                     <CardContent className={classes.cardContent}>
                                         <Typography gutterBottom variant="h5" component="h2">
                                             Heading
-                      </Typography>
+                                        </Typography>
                                         <Typography>
                                             This is a media card. You can use this section to describe the content.
-                      </Typography>
+                                         </Typography>
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" color="primary">
                                             View
-                      </Button>
+                                        </Button>
                                         <Button size="small" color="primary">
                                             Edit
-                      </Button>
+                                        </Button>
                                     </CardActions>
                                 </Card>
                             </Grid>

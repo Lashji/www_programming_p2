@@ -12,7 +12,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-
+import FormControl from '@material-ui/core/FormControl'
 import {
   BrowserRouter as Router,
   Switch,
@@ -49,8 +49,15 @@ function App(props) {
   const style = {
     backgroundColor: "white",
     textAlign: 'center',
-    margin: 'auto'
+    // margin: 'auto'
   }
+
+  const ToolbarStyles = {
+    display: "grid",
+    gridTemplateColumns: "5% 10% auto 15%"
+  }
+
+ 
 
   let buttons;
   if (props.token) {
@@ -66,14 +73,19 @@ function App(props) {
       <div>
         <div style={style}>
           <AppBar position="static" style={style}>
-            <Toolbar>
+            <Toolbar style={ToolbarStyles} >
               <Link to="/">
                 <HomeIcon style={{ color: grey[900] }} />
               </Link>
               <Link to="/">
                 <h1 style={{ color: grey[900] }}>Löydöt.fi</h1>
               </Link>
-              <SearchBar />
+              {/* <SearchBar /> */}
+              <form noValidate autoComplete="off">
+                <FormControl width={200}>
+                  <TextField id="standard-basic" label="Search..." />
+                </FormControl>
+              </form>
               {buttons}
             </Toolbar>
           </AppBar>
