@@ -1,9 +1,17 @@
-import { connect } from "react-redux";
+import {
+    connect
+} from "react-redux";
 import SignInSide from "./SignIn";
-import { signInOperations } from "./duck";
+import {
+    signInOperations
+} from "./duck";
 
 const mapStateToProps = (state) => {
-    const { token, signingIn, signInError } = state.signIn;
+    const {
+        token,
+        signingIn,
+        signInError
+    } = state.signIn;
     return {
         token,
         signingIn,

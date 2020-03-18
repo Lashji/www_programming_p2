@@ -30,7 +30,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    frontPage: pageOperations.SwitchToFrontPage,
+    frontpage: pageOperations.switchToFrontPage,
+    addPage: pageOperations.switchToAddPage,
     filterProducts: productOperations.filterProducts
 };
 

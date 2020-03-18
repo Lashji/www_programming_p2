@@ -6,6 +6,14 @@ function frontpage() {
     }
 }
 
+const addProductPage = () => {
+    console.log("add product page fired")
+    return {
+        type: types.ADD_PAGE
+    }
+}
+
 export default {
     frontpage,
+    addProductPage
 };

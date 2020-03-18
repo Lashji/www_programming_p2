@@ -8,13 +8,22 @@ const INITIAL_STATE = {
 function pageReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case types.FRONT_PAGE: {
+            console.log("Front page")
+
             return Object.assign({}, state, {
                 ...state,
                 page: "frontpage",
                 searchBar: true
             })
         }
-
+        case types.ADD_PAGE: {
+            console.log("Add page")
+            return Object.assign({}, state, {
+                ...state,
+                page: "addPage",
+                searchBar: false
+            })
+        }
 
         default: {
             return state;

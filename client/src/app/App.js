@@ -69,7 +69,7 @@ function App(props) {
     buttons = (
       <div>
          <Link to="/add">
-            <Button variant="outlined" size="large">
+            <Button onClick={e => props.addPage()} variant="outlined" size="large">
                 Add new product
             </Button>
         </Link>
@@ -97,10 +97,10 @@ function App(props) {
           <AppBar position="static" style={style}>
             <Toolbar style={ToolbarStyles} >
               <Link to="/">
-                <HomeIcon style={{ color: grey[900] }} />
+                <HomeIcon onClick={e => props.frontpage()} style={{ color: grey[900] }} />
               </Link>
               <Link to="/">
-                <h1 style={{ color: grey[900] }}>Löydöt.fi</h1>
+                <h1 onClick={e => props.frontpage()} style={{ color: grey[900] }}>Löydöt.fi</h1>
               </Link>
               <div></div> {/*These are for keeping the searchbar in middle*/}
               {searchbar}

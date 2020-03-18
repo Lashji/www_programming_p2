@@ -18,6 +18,7 @@ function signIn(email, password, history) {
                 return response.json();
             })
             .then(json => {
+                console.log("logind response", json)
                 if (json.token) {
                     dispatch(creators.receiveToken("Bearer " + json.token));
                     history.push("/");

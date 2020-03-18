@@ -1,18 +1,19 @@
 import creators from "./actions";
 
-// function logOut() {
-//     return dispatch => {
-//         dispatch(creators.logOut());
-//     }
-// }
-
 const switchToFrontPage = () => {
     return dispatch => {
-        dispatch(creators.frontpage)
+        dispatch(creators.frontpage())
+    }
+}
+
+const switchToAddPage = () => {
+    return dispatch => {
+        dispatch(creators.addProductPage())
     }
 }
 
 
 export default {
     switchToFrontPage,
+    switchToAddPage
 }
