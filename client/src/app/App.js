@@ -4,7 +4,7 @@ import './signin/SignIn.js';
 import SignInContainer from './signin/SignInContainer';
 import SignUpContainer from "./signup/SignUpContainer";
 import 'typeface-roboto';
-import Frontpage from './frontpage/Frontpage.js'
+import FrontpageContainer from './frontpage/FrontpageContainer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { grey } from '@material-ui/core/colors';
@@ -45,6 +45,8 @@ function LogOut(props) {
   )
 }
 
+
+
 function App(props) {
   const style = {
     backgroundColor: "white",
@@ -70,14 +72,15 @@ function App(props) {
 
   let searchbar
   console.log("props=>", props)
-  if (props.searchBar )
-    searchbar = <form noValidate autoComplete="off">
+
+  if (props.searchBar)
+    searchbar = 
     <FormControl fullWidth>
-      <TextField id="standard-basic" label="Search..." />
+      <TextField  id="standard-basic" label="Search..." />
     </FormControl>
-  </form>
   else
-  searchbar = <div></div>
+    searchbar = <div></div>
+
 
   return (
     <Router>
@@ -91,9 +94,9 @@ function App(props) {
               <Link to="/">
                 <h1 style={{ color: grey[900] }}>Löydöt.fi</h1>
               </Link>
-              <div></div>
+              <div></div> {/*These are for keeping the searchbar in middle*/}
               {searchbar}
-              <div></div>
+              <div></div> {/*These are for keeping the searchbar in middle*/}
               {buttons}
             </Toolbar>
           </AppBar>
@@ -109,7 +112,7 @@ function App(props) {
           </Route>
           <Route path="/sign_up" component={SignUpContainer}>
           </Route>
-          <Route path="/" component={Frontpage}>
+          <Route path="/" component={FrontpageContainer}>
           </Route>
         </Switch>
       </div>

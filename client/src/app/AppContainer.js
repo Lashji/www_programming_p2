@@ -11,9 +11,7 @@ const mapStateToProps = (state) => {
         token,
     } = state.signIn;
     const {
-        page
-    } = state.page
-    const {
+        page,
         searchBar
     } = state.page
 
