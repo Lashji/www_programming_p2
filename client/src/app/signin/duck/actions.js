@@ -26,9 +26,25 @@ function logOut() {
     }
 }
 
+function receiveRole(role) {
+    return {
+        type: types.RECEIVE_ROLE,
+        role
+    }
+}
+
+function receiveID(ID) {
+    return {
+        type: types.RECEIVE_ID,
+        ID
+    }
+}
+
 export default {
     requestSignIn,
     receiveToken,
     signInError,
     logOut,
+    receiveRole,
+    receiveID
 };

@@ -1,4 +1,5 @@
 import creators from "./actions";
+import jwt from 'jwt-decode'
 
 function signIn(email, password, history) {
     return dispatch => {
@@ -20,7 +21,13 @@ function signIn(email, password, history) {
             .then(json => {
                 console.log("logind response", json)
                 if (json.token) {
+
+                    const user = jwt(json.token)
+                    console.log("USER = ", user)
                     dispatch(creators.receiveToken("Bearer " + json.token));
+                    dispatch(creators.receiveRole(user.role))
+                    dispatch(creators.receiveID(user.id))
+
                     history.push("/");
                 } else if (json.error) {
                     dispatch(creators.signInError(json.error));

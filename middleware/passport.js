@@ -10,7 +10,9 @@ const jwtConfig = config.get("jwt");
 
 
 module.exports = function (passport) {
-    passport.use(new LocalStrategy({ usernameField: 'email' }, verifyLogin));
+    passport.use(new LocalStrategy({
+        usernameField: 'email'
+    }, verifyLogin));
 
     // save userId to session
     passport.serializeUser(function (user, done) {
@@ -26,10 +28,11 @@ module.exports = function (passport) {
 
     // The token should be in the Authorization Header as a Bearer Token, as was in the lecture slides
     passport.use(new JWTStrategy({
-        jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey: jwtConfig.key,
-    },
+            jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+            secretOrKey: jwtConfig.key,
+        },
         function (jwtPayload, done) {
+            console.log("jwtpayload", jwtPayload)
             return User.findById(jwtPayload.id)
                 .then(user => {
                     return done(null, user);
@@ -45,7 +48,9 @@ async function verifyLogin(email, password, done) {
         'Login failed. Check email and password.';
 
     // Check if the user with given email actually exists
-    const user = await User.findOne({ email }).exec();
+    const user = await User.findOne({
+        email
+    }).exec();
     if (!user) return done(null, false, errorMessage);
 
 

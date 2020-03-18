@@ -1,6 +1,8 @@
 import types from "./types";
 
 const INITIAL_STATE = {
+    role: undefined,
+    ID: undefined,
     token: null,
     signingIn: false,
     signInError: "",
@@ -31,10 +33,26 @@ function signInReducer(state = INITIAL_STATE, action) {
             }
         }
         case types.LOG_OUT: {
+            console.log("firing logout")
             return {
                 ...state,
                 token: null,
+                role: undefined,
+                ID: undefined
             }
+        }
+        case types.RECEIVE_ROLE: {
+            console.log("receiving action ", action.role)
+            return Object.assign({}, state, {
+                ...state,
+                role: action.role
+            })
+        }
+        case types.RECEIVE_ID: {
+            return Object.assign({}, state, {
+                ...state,
+                ID: action.ID
+            })
         }
         default: {
             return state;

@@ -6,6 +6,9 @@ import {
     pageOperations
 } from "./duck"
 import {
+    signInOperations
+} from './signin/duck'
+import {
     productOperations
 } from './frontpage/productReducer'
 
@@ -30,6 +33,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
+    logOut: signInOperations.logOut,
     frontpage: pageOperations.switchToFrontPage,
     addPage: pageOperations.switchToAddPage,
     filterProducts: productOperations.filterProducts

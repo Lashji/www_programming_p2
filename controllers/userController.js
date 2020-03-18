@@ -40,7 +40,8 @@ module.exports = {
 				}
 
 				const token = jwt.sign({
-					id: user.id
+					id: user.id,
+					role: user.role
 				}, jwtConfig.key, {
 					algorithm: "HS256"
 				});

@@ -28,6 +28,11 @@ const productSchema = new Schema({
 		type: String,
 		required: true
 	},
+	state: {
+		type: Number,
+		required: true,
+		default: -1
+	},
 	original_user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',

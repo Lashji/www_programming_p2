@@ -6,7 +6,7 @@ module.exports = {
 		const items = await Product.find()
 			.exec()
 
-		console.log("returning items: ", items)
+		// console.log("returning items: ", items)
 		res.json(items)
 	},
 	showItem(req, res) {
@@ -15,18 +15,18 @@ module.exports = {
 			id: id
 		})
 	},
-	saveItem(req, res){
+	saveItem(req, res) {
 		const data = req.body
 
 		let product = new Product(data)
 		product.save()
-		console.log("saving item, body=",req.body)
+		console.log("saving item, body=", req.body)
 	},
-	updateItem(req, res){
+	updateItem(req, res) {
 		console.log("updating id", req.params.id)
 		console.log("updating item, body=", req.body)
 	},
-	deleteItem(req, res){
+	deleteItem(req, res) {
 		console.log("deleting id", req.params.id)
 	}
 }
