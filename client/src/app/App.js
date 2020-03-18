@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import FormControl from '@material-ui/core/FormControl'
 import Searchbar from './components/Searchbar'
-
+import AddProductPageContainer from './addproduct/AddProductPageContainer'
 
 import {
   BrowserRouter as Router,
@@ -60,15 +60,21 @@ function App(props) {
 
   const ToolbarStyles = {
     display: "grid",
-    gridTemplateColumns: "5% 10% auto 30% auto 15%"
+    gridTemplateColumns: "5% 10% auto 30% auto 20%"
   }
 
  
   let buttons;
   if (props.token) {
-    buttons = <LogOut
-      onClick={props.logOut}
-    />;
+    buttons = (
+      <div>
+         <Link to="/add">
+            <Button variant="outlined" size="large">
+                Add new product
+            </Button>
+        </Link>
+        <LogOut onClick={props.logOut}/>);
+      </div>)
   }
   else {
     buttons = <SignInSignUp />;
@@ -113,6 +119,8 @@ function App(props) {
           <Route path="/sign_in" component={SignInContainer}>
           </Route>
           <Route path="/sign_up" component={SignUpContainer}>
+          </Route>
+          <Route path="/add" component={AddProductPageContainer} >
           </Route>
           <Route path="/" component={FrontpageContainer}>
           </Route>

@@ -16,11 +16,9 @@ const getProducts = () => {
 }
 
 const filterProducts = (e, products) => {
-    console.log("filtering", products)
 
     const filter = () => {
         const value = e.target.value
-        console.log("filtering")
         console.log(products)
 
         const filteredProducts = products.filter(i => {
@@ -28,9 +26,7 @@ const filterProducts = (e, products) => {
             let tmpKeywords = [...i.keywords]
             tmpKeywords.push(i.category)
             tmpKeywords.push(i.name)
-            console.log("descriptiton", i.description.split(" "))
             let words = tmpKeywords.concat(i.description.split(" "))
-            console.log("keywords", tmpKeywords)
             const found = []
             for (let j in words) {
                 if (words[j].toLowerCase().startsWith(value.toLowerCase()))
