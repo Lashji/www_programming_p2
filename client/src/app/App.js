@@ -78,7 +78,7 @@ function App(props) {
   console.log("props=>", props)
 
   if (props.searchBar)
-    searchbar = <Searchbar />
+    searchbar = <Searchbar products={props.products} filterProducts={props.filterProducts} />
    
   else
     searchbar = <div></div>

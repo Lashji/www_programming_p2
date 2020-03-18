@@ -15,9 +15,38 @@ const getProducts = () => {
     }
 }
 
-const filterProducts = (products) => {
+const filterProducts = (e, products) => {
+    console.log("filtering", products)
+
+    const filter = () => {
+        const value = e.target.value
+        console.log("filtering")
+        console.log(products)
+
+        const filteredProducts = products.filter(i => {
+
+            let tmpKeywords = [...i.keywords]
+            tmpKeywords.push(i.category)
+            tmpKeywords.push(i.name)
+            tmpKeywords.concat(i.description.split())
+            console.log("keywords", tmpKeywords)
+            const found = []
+            for (let j in tmpKeywords) {
+                if (tmpKeywords[j].startsWith(value))
+                    found.push(tmpKeywords[i])
+            }
+
+            return found.length > 0
+        })
+
+        console.log("filtered", filteredProducts)
+
+        return filteredProducts
+    }
+
+
     return dispatch => {
-        creators.filterProducts(products)
+        dispatch(creators.filterProducts(filter()))
     }
 }
 

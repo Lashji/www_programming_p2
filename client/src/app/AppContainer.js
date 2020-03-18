@@ -5,7 +5,10 @@ import App from "./App";
 import {
     pageOperations
 } from "./duck"
-import productOperations from './frontpage/productReducer'
+import {
+    productOperations
+} from './frontpage/productReducer'
+
 const mapStateToProps = (state) => {
     const {
         token,
@@ -14,12 +17,15 @@ const mapStateToProps = (state) => {
         page,
         searchBar
     } = state.page
-
+    const {
+        products
+    } = state.products
 
     return {
         token,
         page,
-        searchBar
+        searchBar,
+        products
     };
 };
 

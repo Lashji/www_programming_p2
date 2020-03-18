@@ -73,7 +73,7 @@ export default function Frontpage(props) {
             <main>
                 <Container className={classes.cardGrid} maxWidth="md">
                     <Grid container spacing={4}>
-                        {props.products.map(product => {
+                        {props.filtered_products.map(product => {
                                 return (
                                 <Product key={product._id} classes={classes} product={product} />
                                 )

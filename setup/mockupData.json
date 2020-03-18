@@ -30,5 +30,21 @@
         "sale_price": "159",
         "description": "Paska sohva",
         "keywords": ["sohva", "huonekalu", "paska"]
+    }, {
+        "category": "Sängyt",
+        "name": "Sänky1",
+        "offer_price": "100",
+        "sale_price": "150",
+        "description": "Tästä Epämukava sänky kalliilla",
+        "keywords": ["Sänky", "kova"]
+    },
+
+    {
+        "category": "Taulu",
+        "name": "Taulu1",
+        "offer_price": "90",
+        "sale_price": "159",
+        "description": "Mona Lisa",
+        "keywords": ["taulu", "kallis"]
     }
 ]

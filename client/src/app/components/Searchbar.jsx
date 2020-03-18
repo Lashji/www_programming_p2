@@ -3,11 +3,12 @@ import FormControl from '@material-ui/core/FormControl'
 import TextField from '@material-ui/core/TextField';
 
 
-const Searchbar = (props) => {
+const Searchbar = ({filterProducts, products}) => {
 
+  
     return (
     <FormControl fullWidth>
-      <TextField  id="standard-basic" label="Search..." />
+      <TextField onChange={e => filterProducts(e, products)}  id="standard-basic" label="Search..." />
     </FormControl>
     )
 }
