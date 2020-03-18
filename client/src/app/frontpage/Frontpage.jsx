@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-
+import Product from '../components/Product'
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -56,7 +56,6 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-// const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Frontpage(props) {
     console.log(props)
@@ -72,40 +71,13 @@ export default function Frontpage(props) {
         <React.Fragment>
             <CssBaseline />
             <main>
-
                 <Container className={classes.cardGrid} maxWidth="md">
                     <Grid container spacing={4}>
                         {props.products.map(product => {
-                            let img = product.image?product.image:"https://source.unsplash.com/random"
-                            return (
-                              <Grid item key={product._id} xs={12} sm={6} md={4}>
-                                <Card className={classes.card}>
-                                    <CardMedia
-                                        className={classes.cardMedia}
-                                        image={img}
-                                        title="Image title"
-                                    />
-                                    <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            {product.name}
-                                        </Typography>
-                                        <Typography>
-                                            {product.description}
-                                         </Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <Button size="small" color="primary">
-                                            View
-                                        </Button>
-                                        <Button size="small" color="primary">
-                                            Edit
-                                        </Button>
-                                    </CardActions>
-                                </Card>
-                            </Grid>
-                          )
-                        }
-
+                                return (
+                                <Product key={product._id} classes={classes} product={product} />
+                                )
+                            }
                         )}
                     </Grid>
                 </Container>

@@ -1,18 +1,34 @@
-[
-    {
-        "category":"huonekalut",
-        "name":"Sohva1",
-        "offer_price":"100",
-        "sale_price":"150",
-        "keywords":["sohva", "huonekalu"]
+[{
+        "category": "huonekalut",
+        "name": "Sohva1",
+        "offer_price": "100",
+        "sale_price": "150",
+        "description": "Tästä Epämukava sohva halvalla",
+        "keywords": ["sohva", "huonekalu"]
     },
-    
+
     {
-        "category":"huonekalut",
-        "name":"Sohva2",
-        "offer_price":"90",
-        "sale_price":"159",
-        "keywords":["sohva", "huonekalu"]
+        "category": "huonekalut",
+        "name": "Sohva2",
+        "offer_price": "90",
+        "sale_price": "159",
+        "description": "Mukava sohva",
+        "keywords": ["sohva", "huonekalu"]
+    }, {
+        "category": "huonekalut",
+        "name": "Sohva3",
+        "offer_price": "100",
+        "sale_price": "150",
+        "description": "Tästä Epämukava sohva halvalla",
+        "keywords": ["sohva", "huonekalu"]
+    },
+
+    {
+        "category": "huonekalut",
+        "name": "Sohva4",
+        "offer_price": "90",
+        "sale_price": "159",
+        "description": "Paska sohva",
+        "keywords": ["sohva", "huonekalu", "paska"]
     }
-    
 ]

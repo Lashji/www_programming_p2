@@ -1,17 +1,5 @@
 import creators from "./actions";
 
-// function logOut() {
-//     return dispatch => {
-//         dispatch(creators.logOut());
-//     }
-// }
-
-// const switchToFrontPage = () => {
-//     return dispatch => {
-//         dispatch(creators.frontpage)
-//     }
-// }
-
 const getProducts = () => {
     return dispatch => {
         dispatch(creators.requestProducts())

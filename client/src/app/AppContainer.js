@@ -5,7 +5,7 @@ import App from "./App";
 import {
     pageOperations
 } from "./duck"
-
+import productOperations from './frontpage/productReducer'
 const mapStateToProps = (state) => {
     const {
         token,
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
         page,
         searchBar
     } = state.page
+
 
     return {
         token,
@@ -24,6 +25,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     frontPage: pageOperations.SwitchToFrontPage,
+    filterProducts: productOperations.filterProducts
 };
 
 const AppContainer = connect(

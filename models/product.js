@@ -24,18 +24,22 @@ const productSchema = new Schema({
 		type: [String],
 		required: false
 	},
-	// original_user: {
-	// 	type: mongoose.Schema.Types.ObjectId,
-	// 	ref: 'User'
-	// }, // use populate
-	// images: {
-	// 	type: [mongoose.Schema.Types.ObjectId],
-	// 	ref: 'Image'
-	// }
+	description: {
+		type: String,
+		required: true
+	},
+	original_user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
+	}, // use populate
+	images: {
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: 'Image'
+	}
 })
 
 
-productSchema.virtual('link').get(function() {
+productSchema.virtual('link').get(function () {
 	return `http://localhost:3000/api/products/${this._id}`
 })
 

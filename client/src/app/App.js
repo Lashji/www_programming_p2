@@ -13,6 +13,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import FormControl from '@material-ui/core/FormControl'
+import Searchbar from './components/Searchbar'
+
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -48,6 +51,7 @@ function LogOut(props) {
 
 
 function App(props) {
+  console.log("App props =>", props)
   const style = {
     backgroundColor: "white",
     textAlign: 'center',
@@ -74,10 +78,8 @@ function App(props) {
   console.log("props=>", props)
 
   if (props.searchBar)
-    searchbar = 
-    <FormControl fullWidth>
-      <TextField  id="standard-basic" label="Search..." />
-    </FormControl>
+    searchbar = <Searchbar />
+   
   else
     searchbar = <div></div>
 
