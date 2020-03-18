@@ -10,9 +10,14 @@ const mapStateToProps = (state) => {
     const {
         token,
     } = state.signIn;
+    const {
+        products
+    } = state.products
 
+    console.log("state", state)
     return {
         token,
+        products
     };
 };
 
