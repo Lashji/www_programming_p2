@@ -54,7 +54,7 @@ const AddProductPage = (props)=> {
             <Container className={classes.cardGrid} maxWidth="md">
                 <Grid container spacing={4}>
             <Typography variant="h6" gutterBottom>
-            Shipping address
+            Add New Product
             </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={12}>
@@ -96,6 +96,9 @@ const AddProductPage = (props)=> {
                     <TextField id="description" name="description" label="Product Description" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={12}>
+                    <Typography variant="h6" gutterBottom>
+                    Add Image
+                    </Typography>
                     <DropzoneArea />
                 </Grid>
                 
