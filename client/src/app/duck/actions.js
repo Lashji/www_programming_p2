@@ -1,11 +1,11 @@
 import types from "./types";
 
-function logOut() {
+function frontpage() {
     return {
-        type: types.LOG_OUT,
+        type: types.FRONT_PAGE,
     }
 }
 
 export default {
-    logOut,
+    frontpage,
 };

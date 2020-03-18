@@ -2,38 +2,25 @@ import types from "./types";
 
 const INITIAL_STATE = {
     token: null,
-    signingIn: false,
-    signInError: "",
+    page: "frontpage",
+    searchBar: true
 };
 
-function signInReducer(state = INITIAL_STATE, action) {
+function pageReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
-        case types.REQUEST_SIGN_IN: {
-            return {
+        case types.FRONT_PAGE: {
+            return Object.assign({}, state, {
                 ...state,
-                signingIn: true,
-            }
+                page: "frontpage",
+                searchBar: true
+            })
         }
-        case types.SIGN_IN_ERROR: {
-            return {
-                ...state,
-                signingIn: false,
-                signInError: action.error,
-                token: null,
-            }
-        }
-        case types.RECEIVE_TOKEN: {
-            return {
-                ...state,
-                signingIn: false,
-                signInError: "",
-                token: action.token,
-            }
-        }
+
+
         default: {
             return state;
         }
     }
 }
 
-export default signInReducer;
+export default pageReducer;

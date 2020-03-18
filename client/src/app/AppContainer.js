@@ -1,16 +1,31 @@
-import { connect } from "react-redux";
+import {
+    connect
+} from "react-redux";
 import App from "./App";
-import { signInOperations } from "./signin/duck"
+import {
+    pageOperations
+} from "./duck"
 
 const mapStateToProps = (state) => {
-    const { token, } = state.signIn;
+    const {
+        token,
+    } = state.signIn;
+    const {
+        page
+    } = state.page
+    const {
+        searchBar
+    } = state.page
+
     return {
         token,
+        page,
+        searchBar
     };
 };
 
 const mapDispatchToProps = {
-    logOut: signInOperations.logOut,
+    frontPage: pageOperations.SwitchToFrontPage,
 };
 
 const AppContainer = connect(

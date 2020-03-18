@@ -1,5 +1,5 @@
-const LOG_OUT = "LOG_OUT"
+const FRONT_PAGE = "FRONT_PAGE"
 
 export default {
-    LOG_OUT,
+    FRONT_PAGE,
 }

@@ -1,11 +1,18 @@
 import creators from "./actions";
 
-function logOut() {
+// function logOut() {
+//     return dispatch => {
+//         dispatch(creators.logOut());
+//     }
+// }
+
+const switchToFrontPage = () => {
     return dispatch => {
-        dispatch(creators.logOut());
+        dispatch(creators.frontpage)
     }
 }
 
+
 export default {
-    logOut,
+    switchToFrontPage,
 }

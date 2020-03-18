@@ -1,4 +1,10 @@
-import signInReducer from "./reducers";
-export { default as signInOperations } from "./operations";
-export { default as signInTypes } from "./types";
-export default signInReducer;
+import pageReducer from "./reducers";
+export {
+    default as pageOperations
+}
+from "./operations";
+export {
+    default as pageTypes
+}
+from "./types";
+export default pageReducer;

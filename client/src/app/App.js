@@ -49,16 +49,15 @@ function App(props) {
   const style = {
     backgroundColor: "white",
     textAlign: 'center',
-    // margin: 'auto'
+    margin: 'auto'
   }
 
   const ToolbarStyles = {
     display: "grid",
-    gridTemplateColumns: "5% 10% auto 15%"
+    gridTemplateColumns: "5% 10% auto 30% auto 15%"
   }
 
  
-
   let buttons;
   if (props.token) {
     buttons = <LogOut
@@ -68,6 +67,18 @@ function App(props) {
   else {
     buttons = <SignInSignUp />;
   }
+
+  let searchbar
+  console.log("props=>", props)
+  if (props.searchBar )
+    searchbar = <form noValidate autoComplete="off">
+    <FormControl fullWidth>
+      <TextField id="standard-basic" label="Search..." />
+    </FormControl>
+  </form>
+  else
+  searchbar = <div></div>
+
   return (
     <Router>
       <div>
@@ -80,12 +91,9 @@ function App(props) {
               <Link to="/">
                 <h1 style={{ color: grey[900] }}>Löydöt.fi</h1>
               </Link>
-              {/* <SearchBar /> */}
-              <form noValidate autoComplete="off">
-                <FormControl width={200}>
-                  <TextField id="standard-basic" label="Search..." />
-                </FormControl>
-              </form>
+              <div></div>
+              {searchbar}
+              <div></div>
               {buttons}
             </Toolbar>
           </AppBar>
