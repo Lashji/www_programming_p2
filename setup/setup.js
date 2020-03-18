@@ -33,7 +33,7 @@ const createUsers = async (config) => {
     console.log("admin user exists in db:", admin)
 
     if (admin) {
-        console.log("adming already found... returning")
+        console.log("admin user already found... returning")
         return
     }
 

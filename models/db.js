@@ -14,7 +14,7 @@ const connectDB = (dbConfig) => {
         })
         .then(() => {
             mongoose.connection.on('error', (err) => {
-                debug(err);
+                console.log(err);
             });
 
             mongoose.connection.on('reconnectFailed', handleCriticalError);
@@ -23,7 +23,7 @@ const connectDB = (dbConfig) => {
 }
 
 const handleCriticalError = (err) => {
-    console.err(err)
+    console.log(err)
     throw err
 }
 
@@ -32,4 +32,7 @@ const disconnectDB = () => {
     mongoose.disconnect();
 }
 
-module.exports = { connectDB, disconnectDB }
+module.exports = {
+    connectDB,
+    disconnectDB
+}
