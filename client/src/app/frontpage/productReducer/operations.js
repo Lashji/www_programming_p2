@@ -28,12 +28,13 @@ const filterProducts = (e, products) => {
             let tmpKeywords = [...i.keywords]
             tmpKeywords.push(i.category)
             tmpKeywords.push(i.name)
-            tmpKeywords.concat(i.description.split())
+            console.log("descriptiton", i.description.split(" "))
+            let words = tmpKeywords.concat(i.description.split(" "))
             console.log("keywords", tmpKeywords)
             const found = []
-            for (let j in tmpKeywords) {
-                if (tmpKeywords[j].startsWith(value))
-                    found.push(tmpKeywords[i])
+            for (let j in words) {
+                if (words[j].toLowerCase().startsWith(value.toLowerCase()))
+                    found.push(words[j].toLowerCase())
             }
 
             return found.length > 0
