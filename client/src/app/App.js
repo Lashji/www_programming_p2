@@ -15,7 +15,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import FormControl from '@material-ui/core/FormControl'
 import Searchbar from './components/Searchbar'
 import AddProductPageContainer from './addproduct/AddProductPageContainer'
-
+import AdminPageContainer from './adminPage/AdminPageContainer'
 import {
   BrowserRouter as Router,
   Switch,
@@ -42,12 +42,21 @@ function SignInSignUp() {
 
 function LogOut(props) {
   return (
-    <Button variant="outlined" size="large" onClick={props.onClick}>
+    <Button variant="outlined" size="medium" onClick={props.onClick}>
       Log Out
     </Button>
   )
 }
 
+const GoToAdmin= (props) =>{
+  return (
+    <Link to="/admin">
+            <Button onClick={e => props.adminPage()} variant="outlined" size="medium">
+                Admin
+            </Button>
+    </Link>
+  )
+}
 
 
 function App(props) {
@@ -66,10 +75,14 @@ function App(props) {
  
   let buttons;
   if (props.token) {
+    let adminBtn
+    if (props.role === 'admin')
+      adminBtn = <GoToAdmin adminPage={props.adminPage} />
     buttons = (
       <div>
+        {adminBtn}
          <Link to="/add">
-            <Button onClick={e => props.addPage()} variant="outlined" size="large">
+            <Button onClick={e => props.addPage()} variant="outlined" size="medium">
                 Add new product
             </Button>
         </Link>
@@ -119,6 +132,8 @@ function App(props) {
           <Route path="/sign_in" component={SignInContainer}>
           </Route>
           <Route path="/sign_up" component={SignUpContainer}>
+          </Route>
+          <Route path="/admin" component={AdminPageContainer}>
           </Route>
           <Route path="/add" component={AddProductPageContainer} >
           </Route>

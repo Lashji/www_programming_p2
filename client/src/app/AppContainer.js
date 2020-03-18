@@ -15,6 +15,8 @@ import {
 const mapStateToProps = (state) => {
     const {
         token,
+        role,
+        id
     } = state.signIn;
     const {
         page,
@@ -26,6 +28,8 @@ const mapStateToProps = (state) => {
 
     return {
         token,
+        role,
+        id,
         page,
         searchBar,
         products
@@ -36,6 +40,7 @@ const mapDispatchToProps = {
     logOut: signInOperations.logOut,
     frontpage: pageOperations.switchToFrontPage,
     addPage: pageOperations.switchToAddPage,
+    adminPage: pageOperations.switchToAdminPage,
     filterProducts: productOperations.filterProducts
 };
 

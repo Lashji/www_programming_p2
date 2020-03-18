@@ -12,8 +12,14 @@ const switchToAddPage = () => {
     }
 }
 
+const switchToAdminPage = () => {
+    return dispatch => {
+        dispatch(creators.adminPage())
+    }
+}
 
 export default {
     switchToFrontPage,
-    switchToAddPage
+    switchToAddPage,
+    switchToAdminPage
 }

@@ -25,6 +25,14 @@ function pageReducer(state = INITIAL_STATE, action) {
             })
         }
 
+        case types.ADMIN_PAGE: {
+            return Object.assign({}, state, {
+                ...state,
+                page: "adminPage",
+                searchBar: false
+            })
+        }
+
         default: {
             return state;
         }

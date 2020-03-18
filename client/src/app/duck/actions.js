@@ -13,7 +13,14 @@ const addProductPage = () => {
     }
 }
 
+const adminPage = () => {
+    return {
+        type: types.ADMIN_PAGE
+    }
+}
+
 export default {
     frontpage,
-    addProductPage
+    addProductPage,
+    adminPage
 };
