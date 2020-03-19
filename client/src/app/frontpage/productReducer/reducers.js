@@ -3,6 +3,7 @@ import types from "./types";
 const INITIAL_STATE = {
     products: [],
     filtered_products: [],
+    pending_products: [],
     isFetching: false,
     didInvalidate: false,
     error: undefined
@@ -22,8 +23,9 @@ function productReducer(state = INITIAL_STATE, action) {
                 ...state,
                 isFetching: false,
                 didInvalidate: false,
-                products: action.data,
-                filtered_products: action.data
+                products: action.accepted,
+                filtered_products: action.accepted,
+                pending_products: action.pending
             })
         }
         case types.FILTER_PRODUCTS: {

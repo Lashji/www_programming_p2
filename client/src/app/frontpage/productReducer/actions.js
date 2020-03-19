@@ -8,9 +8,12 @@ const requestProducts = () => {
 
 const receiveProducts = (json) => {
     console.log("receiving products", json)
+
+
     return {
         type: types.RECEIVE_PRODUCTS,
-        data: json
+        accepted: json.filter(i => i.state === 1),
+        pending: json.filter(i => i.state === 0)
     }
 }
 
