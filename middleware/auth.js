@@ -3,7 +3,7 @@
 const passport = require("passport");
 
 module.exports = {
-    ensureAuthenticated(req, res, next) { //TODO: Rename this to something else. Its used to pass user if token present atm
+    passUser(req, res, next) { //TODO: Rename this to something else. Its used to pass user if token present atm
         passport.authenticate("jwt", {
             session: false
         }, function (err, user, info) {
@@ -14,6 +14,19 @@ module.exports = {
             }
         })(req, res, next);
     },
+
+    ensureAuthenticated(req, res, next) {
+        passport.authenticate("jwt", {
+            session: false
+        }, function (err, user, info) {
+            if (err || !user) {
+                res.status(401).send("Not authenticated");
+            } else {
+                next();
+            }
+        })(req, res, next);
+    },
+
 
     ensureIsAdmin(req, res, next) {
 
