@@ -31,7 +31,7 @@ const productSchema = new Schema({
 	state: {
 		type: Number,
 		required: true,
-		default: -1
+		default: 0
 	},
 	original_user: {
 		type: mongoose.Schema.Types.ObjectId,

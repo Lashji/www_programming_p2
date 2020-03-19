@@ -60,8 +60,9 @@ const useStyles = makeStyles(theme => ({
 export default function Frontpage(props) {
     console.log(props)
     useEffect(() => {
-        props.getProducts()
-    },[])
+        console.log("useeffect token", props.token)
+        props.getProducts(props.token)
+    },[props.token])
 
     document.title = 'Löydöt.fi';
 

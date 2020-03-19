@@ -4,13 +4,18 @@ const passport = require("passport");
 
 module.exports = {
     ensureAuthenticated(req, res, next) {
-        passport.authenticate("jwt", { session: false }, function (err, user, info) {
+        passport.authenticate("jwt", {
+            session: false
+        }, function (err, user, info) {
             if (err || !user) {
                 res.status(401).send("Not authenticated");
-            }
-            else {
+            } else {
                 next();
             }
         })(req, res, next);
+    },
+
+    ensureIsAdmin(req, res, next) {
+
     }
 }

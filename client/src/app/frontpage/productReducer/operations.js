@@ -1,10 +1,15 @@
 import creators from "./actions";
 
-const getProducts = () => {
+const getProducts = (token) => {
     return dispatch => {
         dispatch(creators.requestProducts())
-        return fetch("http://localhost:3000/api/products/")
+        return fetch("http://localhost:3000/api/products/", {
+                headers: {
+                    'Authorization': token,
+                },
+            })
             .then(response => {
+                console.log("response", response)
                 if (!response.ok) {
                     throw Error(response.statustext)
                 }

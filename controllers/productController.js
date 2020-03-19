@@ -1,12 +1,13 @@
 'use strict'
 const Product = require("../models/product")
-
+const passport = require("passport")
 module.exports = {
 	async listItems(req, res) {
 		const items = await Product.find()
 			.exec()
 
-		// console.log("returning items: ", items)
+		console.log("user", req.user)
+		console.log("user role", req.user.role)
 		res.json(items)
 	},
 	showItem(req, res) {

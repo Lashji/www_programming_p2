@@ -28,19 +28,20 @@ module.exports = function (passport) {
 
     // The token should be in the Authorization Header as a Bearer Token, as was in the lecture slides
     passport.use(new JWTStrategy({
-            jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-            secretOrKey: jwtConfig.key,
-        },
-        function (jwtPayload, done) {
-            console.log("jwtpayload", jwtPayload)
-            return User.findById(jwtPayload.id)
-                .then(user => {
-                    return done(null, user);
-                })
-                .catch(err => {
-                    return done(err);
-                });
-        }));
+        jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+        secretOrKey: jwtConfig.key,
+        passReqToCallback: true
+    }, async function (req, jwtPayload, done) {
+        return await User.findById(jwtPayload.id)
+            .then(user => {
+                console.log("User", user)
+                req.user = user
+                return done(null, user);
+            })
+            .catch(err => {
+                return done(err);
+            });
+    }));
 };
 
 async function verifyLogin(email, password, done) {

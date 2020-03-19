@@ -145,20 +145,4 @@ function App(props) {
   );
 }
 
-function SearchBar() {
-  const [search, setSearch] = useState("");
-  const handleSearchChange = (e) => {
-    setSearch(e.target.value);
-  }
-  const style = {
-    backgroundColor: "white"
-  }
-  return (
-    <div>
-      <TextField style={style} id="outlined-search" label={<SearchIcon />} type="search" variant="outlined" onChange={handleSearchChange} />
-    </div>
-  )
-
-}
-
 export default App;

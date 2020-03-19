@@ -4,7 +4,8 @@
         "offer_price": "100",
         "sale_price": "150",
         "description": "Tästä Epämukava sohva halvalla",
-        "keywords": ["sohva", "huonekalu"]
+        "keywords": ["sohva", "huonekalu"],
+        "state": "1"
     },
 
     {
@@ -13,14 +14,16 @@
         "offer_price": "90",
         "sale_price": "159",
         "description": "Mukava sohva",
-        "keywords": ["sohva", "huonekalu"]
+        "keywords": ["sohva", "huonekalu"],
+        "state": "1"
     }, {
         "category": "huonekalut",
         "name": "Sohva3",
         "offer_price": "100",
         "sale_price": "150",
         "description": "Tästä Epämukava sohva halvalla",
-        "keywords": ["sohva", "huonekalu"]
+        "keywords": ["sohva", "huonekalu"],
+        "state": "1"
     },
 
     {
@@ -29,22 +32,45 @@
         "offer_price": "90",
         "sale_price": "159",
         "description": "Paska sohva",
-        "keywords": ["sohva", "huonekalu", "paska"]
+        "keywords": ["sohva", "huonekalu", "paska"],
+        "state": "1"
     }, {
         "category": "Sängyt",
         "name": "Sänky1",
         "offer_price": "100",
         "sale_price": "150",
         "description": "Tästä Epämukava sänky kalliilla",
-        "keywords": ["Sänky", "kova"]
+        "keywords": ["Sänky", "kova"],
+        "state": "1"
     },
-
     {
         "category": "Taulu",
         "name": "Taulu1",
         "offer_price": "90",
         "sale_price": "159",
         "description": "Mona Lisa",
-        "keywords": ["taulu", "kallis"]
+        "keywords": ["taulu", "kallis"],
+        "state": "1"
+    }, {
+        "category": "Autot",
+        "name": "Auto",
+        "offer_price": "100",
+        "sale_price": "150",
+        "description": "Tästä halpa hyvä auto",
+        "keywords": ["auto"],
+        "state": "0"
+    },
+    {
+        "category": "Imurit",
+        "name": "Imuri",
+        "offer_price": "90",
+        "sale_price": "159",
+        "description": "Dyson",
+        "keywords": ["imuri", "dyson", "pussiton"],
+        "state": "0"
     }
+
+
+
+
 ]
