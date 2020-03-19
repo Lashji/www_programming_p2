@@ -3,11 +3,22 @@ const Product = require("../models/product")
 const passport = require("passport")
 module.exports = {
 	async listItems(req, res) {
-		const items = await Product.find()
+		let items = await Product.find({
+				state: 1
+			})
 			.exec()
 
-		console.log("user", req.user)
-		console.log("user role", req.user.role)
+		if (req.user) {
+
+			console.log("req.user found", req.user)
+			if (req.user.role === 'admin') {
+				let pendingItems = await Product.find({
+					state: 0
+				}).exec()
+				items = items.concat(pendingItems)
+			}
+		}
+
 		res.json(items)
 	},
 	showItem(req, res) {
