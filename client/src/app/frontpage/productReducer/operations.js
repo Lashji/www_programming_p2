@@ -52,6 +52,9 @@ const filterProducts = (e, products) => {
     }
 }
 
+
+
+
 export default {
     getProducts,
     filterProducts

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -8,6 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import TextArea from '@material-ui/core/TextareaAutosize'
+import Button from '@material-ui/core/Button'
 import DropzoneArea from '../components/DropzoneArea'
 
 const useStyles = makeStyles(theme => ({
@@ -44,7 +45,53 @@ const useStyles = makeStyles(theme => ({
 
 const AddProductPage = (props)=> {
 
+    const [files, setFiles] = useState([])
+    const [name, setName] = useState("")
+    const [category, setCategory] = useState("")
+    const [price, setPrice] = useState("")
+    const [keywords, setKeywords] = useState("")
+    const [description, setDescription] = useState("")
+
+    const handleFiles = (e) => {
+        console.log("handling files", e)
+      setFiles(e)
+    }
+  
     const classes = useStyles();
+
+    const handleSubmit= (e) => {
+        e.preventDefault();
+
+        console.log("handling submit", e.target)
+
+        const data = new FormData()
+
+        data.append("name", name)
+        data.append("category", category)
+        data.append("sale_price", price)
+        data.append("keywords", keywords)
+        data.append("description", description)
+
+        data.append("sdss", "asd")
+        for (let i in files){
+            data.append("image"+i, files[i])
+        }
+        
+        
+        fetch("http://localhost:3000/api/products/", {
+            method: "POST",
+            headers: {
+                "Authorization": props.token,
+            },
+            body: data
+        })
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log("error when creating new product", err))
+
+    }
+
 
     return ( 
     <div>
@@ -56,9 +103,11 @@ const AddProductPage = (props)=> {
             <Typography variant="h6" gutterBottom>
             Add New Product
             </Typography>
+                <form onSubmit={e => handleSubmit(e)}>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={12}>
                     <TextField
+                    onChange={e => setName(e.target.value)}
                     required
                     id="Name"
                     name="Name"
@@ -68,6 +117,7 @@ const AddProductPage = (props)=> {
                 </Grid>
                 <Grid item xs={12} sm={12}>
                     <TextField
+                    onChange={e => setCategory(e.target.value)}
                     required
                     id="Category"
                     name="Product Category"
@@ -77,15 +127,18 @@ const AddProductPage = (props)=> {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
+                    onChange={e => setPrice(e.target.value)}
                     id="price"
                     name="price"
                     label="Product Price"
                     fullWidth
+                    type="number"
                     required
                     />
                 </Grid>
                 <Grid item xs={12} sm={12}>
                     <TextField
+                    onChange={e => setKeywords(e.target.value)}
                     id="keywords"
                     name="keywords"
                     label="Product keywords"
@@ -93,18 +146,23 @@ const AddProductPage = (props)=> {
                     />
                 </Grid>
                 <Grid item xs={12} sm={12}>
-                    <TextField id="description" name="description" label="Product Description" fullWidth />
+                    <TextField onChange={e => setDescription(e.target.value)} id="description" name="description" label="Product Description" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={12}>
                     <Typography variant="h6" gutterBottom>
                     Add Image
                     </Typography>
-                    <DropzoneArea />
+                    <DropzoneArea handleChange={handleFiles} />
                 </Grid>
                 
+                <Grid item xs={12} >
+                    <Button type="submit" fullWidth variant="contained" color="primary" >Submit</Button>
                 </Grid>
+                </Grid>
+                </form>
                 </Grid>
             </Container>
+            
         </main>
       </React.Fragment></div>)
 }

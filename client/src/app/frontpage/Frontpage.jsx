@@ -62,7 +62,7 @@ export default function Frontpage(props) {
     useEffect(() => {
         console.log("useeffect token", props.token)
         props.getProducts(props.token)
-    },[props.token])
+    },[props.token, ])
 
     document.title = 'Löydöt.fi';
 
