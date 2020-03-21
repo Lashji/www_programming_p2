@@ -38,8 +38,7 @@ const productSchema = new Schema({
 		ref: 'User',
 	}, // use populate
 	images: {
-		type: [mongoose.Schema.Types.ObjectId],
-		ref: 'Image'
+		type: [String],
 	}
 })
 

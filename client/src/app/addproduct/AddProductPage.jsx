@@ -65,18 +65,13 @@ const AddProductPage = (props)=> {
         console.log("handling submit", e.target)
 
         const data = new FormData()
-
+        data.append("user_ID", props.ID)
         data.append("name", name)
         data.append("category", category)
         data.append("sale_price", price)
         data.append("keywords", keywords)
         data.append("description", description)
-
-        data.append("sdss", "asd")
-        for (let i in files){
-            data.append("image"+i, files[i])
-        }
-        
+        data.append("image", files[0])
         
         fetch("http://localhost:3000/api/products/", {
             method: "POST",

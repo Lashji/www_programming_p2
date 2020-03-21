@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 const Product = ({product, classes}) => {
-    let img = product.image?product.image:"https://source.unsplash.com/random"
+    let img = product.images[0]?`http://localhost:3000/api/images/${product.images[0]}`:"https://source.unsplash.com/random"
 
     return (
 

@@ -7,11 +7,12 @@ const ImageController = require("../controllers/imageController");
 const auth = require("../middleware/auth");
 const upload = multer();
 
-router.use(upload.single("image"));
+// router.use(upload.single("image"));
 
-router.use("/", auth.ensureAuthenticated);
+// router.use("/", auth.ensureAuthenticated);
 
-router.get("/:id", ImageController.loadImage);
+router.get("/:filename", ImageController.loadImage);
+router.get("/", ImageController.loadImages);
 router.post("/", ImageController.saveImage);
 
 module.exports = router;

@@ -6,6 +6,7 @@ import AddProductPage from './AddProductPage'
 const mapStateToProps = (state) => {
     const {
         token,
+        ID
     } = state.signIn;
     const {
         filtered_products
@@ -13,6 +14,7 @@ const mapStateToProps = (state) => {
 
     console.log("state", state)
     return {
+        ID,
         token,
         filtered_products
     };
