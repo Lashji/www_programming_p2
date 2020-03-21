@@ -6,7 +6,8 @@ const INITIAL_STATE = {
     pending_products: [],
     isFetching: false,
     didInvalidate: false,
-    error: undefined
+    error: undefined,
+    selectedProduct: undefined
 };
 
 function productReducer(state = INITIAL_STATE, action) {
@@ -32,6 +33,22 @@ function productReducer(state = INITIAL_STATE, action) {
             return Object.assign({}, state, {
                 ...state,
                 filtered_products: action.data
+            })
+        }
+        case types.REQUEST_PRODUCTS: {
+            return Object.assign({}, state, {
+                ...state,
+                isFetching: true,
+                didInvalidate: false,
+                selectedProduct: undefined
+            })
+        }
+        case types.RECEIVE_SINGLE: {
+            return Object.assign({}, state, {
+                ...state,
+                isFetching: false,
+                didInvalidate: false,
+                selectedProduct: state.products.find(i => i._id === action.id)
             })
         }
         case types.ERROR: {

@@ -56,21 +56,21 @@ const updateProductStatus = (id, token) => {
     console.log("update", id)
     return dispatch => {
         dispatch(creators.requestProducts())
-        return fetch("http://localhost:3000/api/products/"+id, {
-            method:"PUT",
-            headers: {
-                'Authorization':token
-            }
-        })
-        .then(res => {
-            if (!res.ok){
-                throw Error(res.statusText)
-            }
+        return fetch("http://localhost:3000/api/products/" + id, {
+                method: "PUT",
+                headers: {
+                    'Authorization': token
+                }
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw Error(res.statusText)
+                }
 
-            return res.json()
-        })
-        .then(json => dispatch(creators.receiveProducts(json)))
-        .catch(err => console.log("Error when updating product", err))
+                return res.json()
+            })
+            .then(json => dispatch(creators.receiveProducts(json)))
+            .catch(err => console.log("Error when updating product", err))
     }
 }
 
@@ -81,9 +81,17 @@ const deleteProduct = (id) => {
     }
 }
 
+const setSelectedProduct = (id) => {
+    console.log("Setting selected", id)
+    return dispatch => {
+        dispatch(creators.receiveSingle(id))
+    }
+}
+
 export default {
     getProducts,
     filterProducts,
     updateProductStatus,
-    deleteProduct
+    deleteProduct,
+    setSelectedProduct
 }

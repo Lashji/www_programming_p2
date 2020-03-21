@@ -24,6 +24,20 @@ const filterProducts = (filteredProducts) => {
     }
 }
 
+const requestSingle = () => {
+    return {
+        type: types.REQUEST_SINGLE
+    }
+}
+
+const receiveSingle = (id) => {
+    return {
+        type: types.RECEIVE_SINGLE,
+        id: id
+    }
+}
+
+
 const error = (err) => {
     return {
         type: types.ERROR,
@@ -35,5 +49,7 @@ export default {
     requestProducts,
     receiveProducts,
     filterProducts,
+    requestSingle,
+    receiveSingle,
     error
 };

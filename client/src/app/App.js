@@ -16,7 +16,7 @@ import FormControl from '@material-ui/core/FormControl'
 import Searchbar from './components/Searchbar'
 import AddProductPageContainer from './addproduct/AddProductPageContainer'
 import AdminPageContainer from './adminPage/AdminPageContainer'
-
+import SingleProductPageContainer from './singleProduct/singleProductPageContainer'
 import {
   BrowserRouter as Router,
   Switch,
@@ -137,6 +137,8 @@ function App(props) {
           <Route path="/admin" component={AdminPageContainer}>
           </Route>
           <Route path="/add" component={AddProductPageContainer} >
+          </Route>
+          <Route path="/product/:id" component={SingleProductPageContainer}>
           </Route>
           <Route path="/" component={FrontpageContainer}>
           </Route>
