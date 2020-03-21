@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
 function SignInSide(props) {
   const history = props.history;
   const classes = useStyles();
-
+  const [open, setOpen] = React.useState(false)
   const [formInput, setFormInput] = React.useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
@@ -139,7 +139,7 @@ function SignInSide(props) {
             >
               Sign In
             </Button>
-            <Snackbar open={props.signInError} anchorOrigin={{ vertical: "bottom", horizontal: "right" }}>
+            <Snackbar open={open} onClick={e => setOpen(true)} onClose={e => setOpen(false)} anchorOrigin={{ vertical: "bottom", horizontal: "right" }}>
               <Alert severity="error">
                 {props.signInError}
               </Alert>
