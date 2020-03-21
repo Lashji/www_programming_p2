@@ -45,7 +45,6 @@ module.exports = {
 		data.offer_price = data.sale_price * 1.24
 
 		let product = new Product(data)
-		product.state = 1
 		product.images = [files.filename]
 
 		await product.save()
@@ -54,7 +53,11 @@ module.exports = {
 		console.log("updating id", req.params.id)
 		console.log("updating item, body=", req.body)
 
-		let result = await Product.findByIdAndUpdate({_id:req.params.id}, {state:1})
+		let result = await Product.findByIdAndUpdate({
+			_id: req.params.id
+		}, {
+			state: 1
+		})
 		console.log("result", result)
 		const items = await Product.find().exec()
 		console.log("returning updated items", items)

@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import {Redirect} from 'react-router-dom'
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -20,6 +21,9 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(6),
     },
+    noProducts: {
+        textAlign: "center"
+    }
 }));
 const AdminPage = (props) => {
     console.log("adminPage props",props)
@@ -33,9 +37,19 @@ const AdminPage = (props) => {
     }
 
 
-    const products = props.pending_products.map(i => {
+    let products
+    if (props.pending_products.length > 0)
+        products = props.pending_products.map(i => {
         return <PendingProduct key={i._id} product={i} updateProductStatus={props.updateProductStatus} deleteProduct={props.deleteProduct}/>
-    })
+        })
+    else
+        products = (<div className={classes.noProducts}>
+                    <Typography align="center" component="h3" variant="h3">
+                    No Pending products at the moment
+                    </Typography>
+                    </div>)
+
+
 
     return (<div>
         <React.Fragment>
