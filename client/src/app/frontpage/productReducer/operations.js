@@ -52,10 +52,17 @@ const filterProducts = (e, products) => {
     }
 }
 
+const updateProductStatus = (id) => {
+    console.log("update", id)
+}
 
-
+const deleteProduct = (id) => {
+    console.log("delet", id)
+}
 
 export default {
     getProducts,
-    filterProducts
+    filterProducts,
+    updateProductStatus,
+    deleteProduct
 }
