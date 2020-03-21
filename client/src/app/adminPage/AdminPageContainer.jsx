@@ -1,7 +1,7 @@
 import {connect } from 'react-redux'
 
 import AdminPage from './AdminPage'
-import productReducer from '../frontpage/productReducer/'
+import {productOperations} from '../frontpage/productReducer/'
 
 const mapStateToProps= state => {   
     const {pending_products} = state.products
@@ -11,8 +11,8 @@ const mapStateToProps= state => {
 
 
 const mapDispatchToProps = {
-    updateProductStatus: productReducer.updateProductStatus,
-    deleteProduct: productReducer.deleteProduct
+    updateProductStatus: productOperations.updateProductStatus,
+    deleteProduct: productOperations.deleteProduct
 }
 
 const AdminPageContainer = connect(mapStateToProps, mapDispatchToProps)(AdminPage)

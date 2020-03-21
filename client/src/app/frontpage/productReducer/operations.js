@@ -52,12 +52,33 @@ const filterProducts = (e, products) => {
     }
 }
 
-const updateProductStatus = (id) => {
+const updateProductStatus = (id, token) => {
     console.log("update", id)
+    return dispatch => {
+        dispatch(creators.requestProducts())
+        return fetch("http://localhost:3000/api/products/"+id, {
+            method:"PUT",
+            headers: {
+                'Authorization':token
+            }
+        })
+        .then(res => {
+            if (!res.ok){
+                throw Error(res.statusText)
+            }
+
+            return res.json()
+        })
+        .then(json => dispatch(creators.receiveProducts(json)))
+        .catch(err => console.log("Error when updating product", err))
+    }
 }
 
 const deleteProduct = (id) => {
     console.log("delet", id)
+    return dispatch => {
+
+    }
 }
 
 export default {

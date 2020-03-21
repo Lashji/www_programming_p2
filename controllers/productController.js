@@ -50,9 +50,15 @@ module.exports = {
 
 		await product.save()
 	},
-	updateItem(req, res) {
+	async updateItem(req, res) {
 		console.log("updating id", req.params.id)
 		console.log("updating item, body=", req.body)
+
+		let result = await Product.findByIdAndUpdate({_id:req.params.id}, {state:1})
+		console.log("result", result)
+		const items = await Product.find().exec()
+		console.log("returning updated items", items)
+		return res.json(items)
 	},
 	deleteItem(req, res) {
 		console.log("deleting id", req.params.id)

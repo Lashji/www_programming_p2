@@ -22,9 +22,10 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 const AdminPage = (props) => {
+    console.log("adminPage props",props)
     const classes = useStyles();
     
-    if (props.role !== "admin"){
+    if (props.role !== "admin" && props.role !== "shopkeeper"){
         console.log("role not admin => redirecting ", props.role)
         return (
             <Redirect to={{pathname: "/", state: {from: props.location}}} />
