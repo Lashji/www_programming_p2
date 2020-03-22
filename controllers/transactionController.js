@@ -17,6 +17,17 @@ const allItems = async (user) => {
         .exec()
 
     if (user) {
+        console.log("user id", user._id)
+        let foundUser = await User.findOne({
+                _id: user._id
+            }).populate('bought_products')
+            .exec()
+
+        console.log("foundUser", foundUser)
+
+        let userItems = foundUser.bought_products
+        console.log("user items", userItems)
+        items = items.concat(userItems)
         console.log("req.user found", user)
         if (user.role === 'admin' || user.role === "shopkeeper") {
             let pendingItems = await Product.find({
@@ -24,6 +35,7 @@ const allItems = async (user) => {
             }).exec()
             items = items.concat(pendingItems)
         }
+
     }
 
     return items
@@ -35,19 +47,26 @@ module.exports = {
         console.log("product id:", req.params.id)
         console.log("req body:", req.body)
 
-        await Product.findByIdAndUpdate({
+        let product = await Product.findByIdAndUpdate({
             _id: req.params.id
         }, {
             state: 3
+        }, {
+            new: true
         })
 
         if (req.body.userID) {
-
-            let user = await User.findOneAndUpdate(req.body.userID, {
+            let user = await User.findOneAndUpdate({
+                _id: req.body.userID
+            }, {
                 "$push": {
-                    "bought_products": req.body.productID
+                    "bought_products": product
                 }
+            }, {
+                new: true
             }).exec()
+
+            console.log("user that bout the item", user)
         }
 
         const items = await allItems(req.user)

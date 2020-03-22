@@ -27,13 +27,18 @@ const createData = async () => {
 
 
 const createUsers = async (config) => {
-    const admin = await User.findOne({
+    const admin = await User.findOneAndUpdate({
         role: 'admin'
+    }, {
+        bought_products: []
+    }, {
+        new: true
     }).exec()
     console.log("admin user exists in db:", admin)
 
     if (admin) {
         console.log("admin user already found... returning")
+
         return
     }
 

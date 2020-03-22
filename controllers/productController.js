@@ -2,6 +2,7 @@
 const Product = require("../models/product")
 const Grid = require("gridfs-stream")
 const mongoose = require("mongoose")
+const User = require("../models/user")
 let gfs
 
 mongoose.connection.once("open", function () {
@@ -16,6 +17,17 @@ const allItems = async (user) => {
 		.exec()
 
 	if (user) {
+		console.log("user id", user._id)
+		let foundUser = await User.findOne({
+				_id: user._id
+			}).populate('bought_products')
+			.exec()
+
+		console.log("foundUser", foundUser)
+
+		let userItems = foundUser.bought_products
+		console.log("user items", userItems)
+		items = items.concat(userItems)
 		console.log("req.user found", user)
 		if (user.role === 'admin' || user.role === "shopkeeper") {
 			let pendingItems = await Product.find({
@@ -23,6 +35,7 @@ const allItems = async (user) => {
 			}).exec()
 			items = items.concat(pendingItems)
 		}
+
 	}
 
 	return items
@@ -32,7 +45,7 @@ module.exports = {
 	async listItems(req, res) {
 		console.log("requesting items")
 		const items = await allItems(req.user)
-		console.log("return items", items)
+		// console.log("return items", items)
 		res.json(items)
 	},
 	showItem(req, res) {

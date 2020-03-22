@@ -13,7 +13,8 @@ const receiveProducts = (json) => {
     return {
         type: types.RECEIVE_PRODUCTS,
         accepted: json.filter(i => i.state === 1),
-        pending: json.filter(i => i.state === 0)
+        pending: json.filter(i => i.state === 0),
+        user_bought_products: json.filter(i => i.state === 3)
     }
 }
 

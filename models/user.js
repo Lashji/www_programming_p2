@@ -3,7 +3,6 @@
 const bcrypt = require("bcryptjs")
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-
 const schemaDefaults = {
 	name: {
 		minLength: 1,
@@ -55,9 +54,11 @@ const userSchema = new Schema({
 		enum: schemaDefaults.role.values,
 		default: schemaDefaults.role.defaultValue
 	},
-	bought_products: {
-		type: [String]
-	}
+	bought_products: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Product'
+	}]
+
 })
 
 

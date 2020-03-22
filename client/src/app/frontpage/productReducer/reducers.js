@@ -4,6 +4,7 @@ const INITIAL_STATE = {
     products: [],
     filtered_products: [],
     pending_products: [],
+    user_bought_products: [],
     isFetching: false,
     didInvalidate: false,
     error: undefined,
@@ -26,7 +27,8 @@ function productReducer(state = INITIAL_STATE, action) {
                 didInvalidate: false,
                 products: action.accepted,
                 filtered_products: action.accepted,
-                pending_products: action.pending
+                pending_products: action.pending,
+                user_bought_products: action.user_bought_products
             })
         }
         case types.FILTER_PRODUCTS: {
