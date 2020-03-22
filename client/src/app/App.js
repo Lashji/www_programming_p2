@@ -21,7 +21,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 function SignInSignUp() {
@@ -42,8 +43,14 @@ function SignInSignUp() {
 }
 
 function LogOut(props) {
+
+  const HandleClick = () => {
+    props.onClick()
+    return <Redirect to={{pathname: "/", state: {from: props.location}}} />
+  }
+
   return (
-    <Button variant="outlined" size="medium" onClick={props.onClick}>
+    <Button variant="outlined" size="medium" onClick={HandleClick}>
       Log Out
     </Button>
   )
