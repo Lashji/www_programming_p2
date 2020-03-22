@@ -12,14 +12,25 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper'
+import { sizing } from '@material-ui/system';
 
 const useStyles = makeStyles(theme => ({
     cardGrid: {
         paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(8),
+        height: "80vh"
     },
+    // gridContainer:{
+    //     height:"100%",
+    //     width: "50vw"
+    // },
+    // gridPaper: {
+    //     width: "100%"
+    // },
     card: {
         height: '100%',
+        width:'100%',
         display: 'flex',
         flexDirection: 'column',
     },
@@ -49,9 +60,10 @@ const SingleProductPage = ({selectedProduct, setSelected}) => {
     return (
      <div>
          <Container className={classes.cardGrid}>
-
-         <Grid item key={selectedProduct._id} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+        <Grid  container alignItems="center" justify="center">
+         <Grid item key={selectedProduct._id} xs={10}>
+             <Paper elevation={3}>
+                <Card  className={classes.card}>
                     <CardMedia
                         className={classes.cardMedia}
                         image={img}
@@ -74,6 +86,8 @@ const SingleProductPage = ({selectedProduct, setSelected}) => {
                         </Button> */}
                     </CardActions>
                 </Card>
+                </Paper>
+                </Grid>
         </Grid>       
         </Container>
 
