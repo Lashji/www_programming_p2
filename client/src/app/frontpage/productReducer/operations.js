@@ -74,10 +74,24 @@ const updateProductStatus = (id, token) => {
     }
 }
 
-const deleteProduct = (id) => {
-    console.log("delet", id)
+const deleteProduct = (id, token) => {
+    console.log("deleting product", id)
     return dispatch => {
-
+        dispatch(creators.requestProducts())
+        fetch("http://localhost:3000/api/products/" + id, {
+                method: "DELETE",
+                headers: {
+                    'Authorization': token
+                }
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw Error(res.statusText)
+                }
+                return res.json()
+            })
+            .then(json => dispatch(creators.receiveProducts(json)))
+            .catch(err => console.log("error when deleting product", err))
     }
 }
 
