@@ -68,6 +68,7 @@ const GoToAdmin= (props) =>{
 }
 
 
+
 function App(props) {
   console.log("App props =>", props)
   const style = {
@@ -81,6 +82,10 @@ function App(props) {
     gridTemplateColumns: "5% 10% auto 30% auto 20%"
   }
 
+  const refresh = () => {
+    props.history.push("/")
+  }
+  
  
   let buttons;
   if (props.token) {

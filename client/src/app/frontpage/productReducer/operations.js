@@ -128,11 +128,36 @@ const postProduct = (data, token) => {
     }
 }
 
+const buyProduct = (userID, productID, token) => {
+    return dispatch => {
+        dispatch(creators.requestProducts)
+        return fetch("http://localhost:3000/api/buy/" + productID, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "appication/json"
+                },
+                body: JSON.stringify({
+                    userID,
+                    productID
+                })
+            })
+            .then(res => {
+                if (!res.ok)
+                    throw Error(res.statusText)
+
+                return res.json()
+            })
+            .then(json => creators.receiveProducts(json))
+            .catch(err => console.log("error when executing buy transaction", err))
+    }
+}
+
 export default {
     getProducts,
     filterProducts,
     updateProductStatus,
     deleteProduct,
     postProduct,
-    setSelectedProduct
+    setSelectedProduct,
+    buyProduct
 }

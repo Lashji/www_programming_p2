@@ -12,13 +12,15 @@ const mapStateToProps = state => {
         selectedProduct
     } = state.products
     const {
+        ID,
         token,
         role
     } = state.signIn
     return {
         selectedProduct,
         token,
-        role
+        role,
+        ID
     }
 }
 
@@ -26,7 +28,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     updateProductStatus: productOperations.updateProductStatus,
     deleteProduct: productOperations.deleteProduct,
-    setSelected: productOperations.setSelectedProduct
+    setSelected: productOperations.setSelectedProduct,
+    buyProduct: productOperations.buyProduct
 }
 
 const BuyPageContainer = connect(mapStateToProps, mapDispatchToProps)(BuyPage)

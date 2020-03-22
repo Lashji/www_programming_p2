@@ -58,7 +58,6 @@ const SingleProductPage = ({selectedProduct, setSelected, role, updateProductSta
 
     const setPending = (id) => {
         console.log("setting pending" , id)
-
         updateProductStatus(id, token, 0)
         history.push("/")
     }
