@@ -8,24 +8,31 @@ mongoose.connection.once("open", function () {
 	gfs = Grid(mongoose.connection.db, mongoose.mongo)
 	gfs.collection('images')
 })
+
+const allItems = async (user) => {
+	let items = await Product.find({
+			state: 1
+		})
+		.exec()
+
+	if (user) {
+		console.log("req.user found", user)
+		if (user.role === 'admin' || user.role === "shopkeeper") {
+			let pendingItems = await Product.find({
+				state: 0
+			}).exec()
+			items = items.concat(pendingItems)
+		}
+	}
+
+	return items
+}
+
 module.exports = {
 	async listItems(req, res) {
-		let items = await Product.find({
-				state: 1
-			})
-			.exec()
-
-		if (req.user) {
-
-			console.log("req.user found", req.user)
-			if (req.user.role === 'admin') {
-				let pendingItems = await Product.find({
-					state: 0
-				}).exec()
-				items = items.concat(pendingItems)
-			}
-		}
-
+		console.log("requesting items")
+		const items = await allItems(req.user)
+		console.log("return items", items)
 		res.json(items)
 	},
 	showItem(req, res) {
@@ -52,15 +59,14 @@ module.exports = {
 	async updateItem(req, res) {
 		console.log("updating id", req.params.id)
 		console.log("updating item, body=", req.body)
-
+		const state = req.body.state
 		let result = await Product.findByIdAndUpdate({
 			_id: req.params.id
 		}, {
-			state: 1
+			state: state
 		})
-		console.log("result", result)
-		const items = await Product.find().exec()
-		console.log("returning updated items", items)
+		const items = await allItems(req.user)
+		console.log("returning items: ", items)
 		return res.json(items)
 	},
 	async deleteItem(req, res) {

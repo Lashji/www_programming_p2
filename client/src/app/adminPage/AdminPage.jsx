@@ -4,8 +4,6 @@ import Grid from '@material-ui/core/Grid'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
-import {Redirect} from 'react-router-dom'
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
@@ -31,16 +29,14 @@ const AdminPage = (props) => {
     
     if (props.role !== "admin" && props.role !== "shopkeeper"){
         console.log("role not admin => redirecting ", props.role)
-        return (
-            <Redirect to={{pathname: "/", state: {from: props.location}}} />
-        )
+        props.history.push("/")
     }
 
-
+    
     let products
     if (props.pending_products.length > 0)
         products = props.pending_products.map(i => {
-        return <PendingProduct key={i._id} product={i} updateProductStatus={props.updateProductStatus} deleteProduct={props.deleteProduct}/>
+        return <PendingProduct key={i._id} product={i} token={props.token} updateProductStatus={props.updateProductStatus} deleteProduct={props.deleteProduct}/>
         })
     else
         products = (<div className={classes.noProducts}>

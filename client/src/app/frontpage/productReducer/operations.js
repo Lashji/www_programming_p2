@@ -52,15 +52,19 @@ const filterProducts = (e, products) => {
     }
 }
 
-const updateProductStatus = (id, token) => {
-    console.log("update", id)
+const updateProductStatus = (id, token, state) => {
+    console.log("update product", id, token, state)
     return dispatch => {
         dispatch(creators.requestProducts())
         return fetch("http://localhost:3000/api/products/" + id, {
                 method: "PUT",
                 headers: {
-                    'Authorization': token
-                }
+                    'Authorization': token,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    state: state
+                })
             })
             .then(res => {
                 if (!res.ok) {

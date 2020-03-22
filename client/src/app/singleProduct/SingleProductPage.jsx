@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const SingleProductPage = ({selectedProduct, setSelected}) => {
+const SingleProductPage = ({selectedProduct, setSelected, role, updateProductStatus, token, history}) => {
     const classes = useStyles()
     const {id} = useParams()
     setSelected(id)
@@ -56,6 +56,29 @@ const SingleProductPage = ({selectedProduct, setSelected}) => {
 
     let img = selectedProduct.images[0]?`http://localhost:3000/api/images/${selectedProduct.images[0]}`:"https://source.unsplash.com/random"
 
+    const setPending = (id) => {
+        console.log("setting pending" , id)
+
+        updateProductStatus(id, token, 0)
+        history.push("/")
+    }
+
+    const Buttons = () => {
+
+        let setPendingButton
+        if (role === 'admin' || role === 'shopkeeper')
+            setPendingButton = <Button variant="contained" size="large" color="secondary" onClick={e => setPending(id)}>Set Pending</Button>
+        else 
+        setPendingButton = ""
+
+        return (<div>
+                {setPendingButton}
+                <Button variant="contained" size="large" color="primary">
+                    Buy
+                </Button>
+             </div>)
+
+    }
 
     return (
      <div>
@@ -78,12 +101,7 @@ const SingleProductPage = ({selectedProduct, setSelected}) => {
                             </Typography>
                     </CardContent>
                     <CardActions>
-                        {/* <Button size="small" color="primary">
-                            View
-                        </Button>
-                        <Button size="small" color="primary">
-                            Edit
-                        </Button> */}
+                       <Buttons></Buttons>
                     </CardActions>
                 </Card>
                 </Paper>

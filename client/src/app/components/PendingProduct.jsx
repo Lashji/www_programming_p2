@@ -30,12 +30,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const PendingProduct = ({product,updateProductStatus,deleteProduct})=>{
+const PendingProduct = ({product,updateProductStatus,deleteProduct, token})=>{
     console.log("update", updateProductStatus)
     const classes = useStyles();
     const theme = useTheme();
     let img = product.images[0]?`http://localhost:3000/api/images/${product.images[0]}`:"https://source.unsplash.com/random"
-    console.log("pending product = ", product)
+    // console.log("pending product = ", product)
     return (
         <Grid item xs={12}>
         <Card  className={classes.root}>
@@ -65,8 +65,8 @@ const PendingProduct = ({product,updateProductStatus,deleteProduct})=>{
                         </Typography>
                         </Grid>
                         <Grid item xs={6}>
-                            <Button onClick={e => updateProductStatus(product._id)} variant="contained" color="primary" >Accept</Button>
-                            <Button onClick={e => deleteProduct(product._id)} variant="contained" color="secondary">Reject</Button>
+                            <Button onClick={e => updateProductStatus(product._id, token, 1)} variant="contained" color="primary" >Accept</Button>
+                            <Button onClick={e => deleteProduct(product._id, token)} variant="contained" color="secondary">Reject</Button>
                         </Grid>
 
                     </Grid>
