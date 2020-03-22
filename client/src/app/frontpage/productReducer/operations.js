@@ -129,12 +129,15 @@ const postProduct = (data, token) => {
 }
 
 const buyProduct = (userID, productID, token) => {
+    console.log("buy operation", userID, productID)
+
     return dispatch => {
         dispatch(creators.requestProducts)
         return fetch("http://localhost:3000/api/buy/" + productID, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "appication/json"
+                    "Authorization": token,
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     userID,
