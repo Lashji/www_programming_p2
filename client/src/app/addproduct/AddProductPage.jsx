@@ -7,6 +7,8 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 import DropzoneArea from '../components/DropzoneArea'
+
+
 const useStyles = makeStyles(theme => ({
     icon: {
         marginRight: theme.spacing(2),
@@ -40,6 +42,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AddProductPage = (props)=> {
+
+    if (!props.token)
+        props.history.push("/")
 
     const [files, setFiles] = useState([])
     const [name, setName] = useState("")
