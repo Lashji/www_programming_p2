@@ -17,6 +17,7 @@ import Searchbar from './components/Searchbar'
 import AddProductPageContainer from './addproduct/AddProductPageContainer'
 import AdminPageContainer from './adminPage/AdminPageContainer'
 import SingleProductPageContainer from './singleProduct/singleProductPageContainer'
+import BuyPageContainer from './buypage/buyPageContainer'
 import {
   BrowserRouter as Router,
   Switch,
@@ -147,6 +148,7 @@ function App(props) {
           </Route>
           <Route path="/product/:id" component={SingleProductPageContainer}>
           </Route>
+          <Route path="/buy/:id" component={BuyPageContainer}/>
           <Route path="/" component={FrontpageContainer}>
           </Route>
         </Switch>

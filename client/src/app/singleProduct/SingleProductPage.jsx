@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper'
-import { sizing } from '@material-ui/system';
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     cardGrid: {
@@ -73,9 +73,11 @@ const SingleProductPage = ({selectedProduct, setSelected, role, updateProductSta
 
         return (<div>
                 {setPendingButton}
-                <Button variant="contained" size="large" color="primary">
-                    Buy
-                </Button>
+                <Link to={`/buy/${id}`}>
+                    <Button variant="contained" size="large" color="primary">
+                        Buy
+                    </Button>
+                </Link>
              </div>)
 
     }
