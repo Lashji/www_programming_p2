@@ -66,12 +66,12 @@ module.exports = {
 	async deleteItem(req, res) {
 		console.log("deleting id", req.params.id)
 
-		let result = await Product.remove({
+		const result = await Product.remove({
 			_id: req.params.id
 		})
 		console.log("delete result", result)
 
-		let items = await Product.find().exec()
+		const items = await Product.find().exec()
 
 		return res.json(items)
 	}

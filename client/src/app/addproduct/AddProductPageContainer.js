@@ -2,6 +2,9 @@ import {
     connect
 } from "react-redux";
 import AddProductPage from './AddProductPage'
+import {
+    productOperations
+} from '../frontpage/productReducer'
 
 const mapStateToProps = (state) => {
     const {
@@ -20,7 +23,9 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+    postProduct: productOperations.postProduct
+};
 
 const addProductPageContainer = connect(
     mapStateToProps,

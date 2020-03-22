@@ -2,15 +2,11 @@ import React, {useState} from 'react'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import TextArea from '@material-ui/core/TextareaAutosize'
 import Button from '@material-ui/core/Button'
 import DropzoneArea from '../components/DropzoneArea'
-
 const useStyles = makeStyles(theme => ({
     icon: {
         marginRight: theme.spacing(2),
@@ -73,20 +69,12 @@ const AddProductPage = (props)=> {
         data.append("description", description)
         data.append("image", files[0])
         
-        fetch("http://localhost:3000/api/products/", {
-            method: "POST",
-            headers: {
-                "Authorization": props.token,
-            },
-            body: data
-        })
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => console.log("error when creating new product", err))
-
+        props.postProduct(data, props.token)
+        
+        props.history.push("/")
     }
 
+   
 
     return ( 
     <div>
@@ -151,7 +139,7 @@ const AddProductPage = (props)=> {
                 </Grid>
                 
                 <Grid item xs={12} >
-                    <Button type="submit" fullWidth variant="contained" color="primary" >Submit</Button>
+                    <Button type="submit" fullWidth variant="contained" color="primary">Submit</Button>
                 </Grid>
                 </Grid>
                 </form>

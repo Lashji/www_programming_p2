@@ -102,10 +102,33 @@ const setSelectedProduct = (id) => {
     }
 }
 
+const postProduct = (data, token) => {
+    return dispatch => {
+        dispatch(creators.requestProducts())
+        return fetch("http://localhost:3000/api/products/", {
+                method: "POST",
+                headers: {
+                    "Authorization": token,
+                },
+                body: data
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw Error(res.statusText)
+                }
+
+                return res.json()
+            })
+            .then(json => dispatch(creators.receiveProducts(json)))
+            .catch(err => console.log("error when creating new product", err))
+    }
+}
+
 export default {
     getProducts,
     filterProducts,
     updateProductStatus,
     deleteProduct,
+    postProduct,
     setSelectedProduct
 }
