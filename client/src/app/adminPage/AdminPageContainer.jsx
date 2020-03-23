@@ -11,6 +11,7 @@ const mapStateToProps= state => {
 
 
 const mapDispatchToProps = {
+    getProducts: productOperations.getProducts,
     updateProductStatus: productOperations.updateProductStatus,
     deleteProduct: productOperations.deleteProduct
 }

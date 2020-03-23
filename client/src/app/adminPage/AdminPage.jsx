@@ -26,10 +26,13 @@ const useStyles = makeStyles(theme => ({
 const AdminPage = (props) => {
     console.log("adminPage props",props)
     const classes = useStyles();
+    React.useEffect(() => {
+        props.getProducts(props.token);
+    },[]);
     
     if (props.role !== "admin" && props.role !== "shopkeeper"){
         console.log("role not admin => redirecting ", props.role)
-        props.history.push("/")
+        props.history.push("/sign_in")
     }
 
     

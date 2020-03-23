@@ -28,7 +28,7 @@ function signIn(email, password, history) {
                     dispatch(creators.receiveRole(user.role))
                     dispatch(creators.receiveID(user.id))
 
-                    history.push("/");
+                    history.goBack();
                 } else if (json.error) {
                     dispatch(creators.signInError(json.error));
                 }

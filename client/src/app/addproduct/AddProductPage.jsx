@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 const AddProductPage = (props) => {
 
     if (!props.token)
-        props.history.push("/")
+        props.history.push("/sign_in")
 
     const [files, setFiles] = useState([])
     const [name, setName] = useState("")
