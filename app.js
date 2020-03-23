@@ -12,10 +12,12 @@ const setup = require("./setup/setup")
 const db = require("./models/db")
 db.connectDB(dbConfig)
 
-const whitelist = ["http://localhost:3001", "http://localhost:3000", "http://localhost:3000/api/images"]
+const whitelist = ["http://localhost:3001", "http://localhost:3000/", "http://localhost:3000/api/images"]
 app.use(cors({
     origin: (origin, callback) => {
+        console.log("origin: ", origin)
         if (whitelist.indexOf(origin) !== -1 || !origin) {
+
             callback(null, true)
         } else {
             callback(new Error('not allowed by CORS'))
