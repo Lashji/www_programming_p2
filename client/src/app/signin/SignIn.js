@@ -74,6 +74,14 @@ function SignInSide(props) {
       password: "",
     }
   );
+  React.useEffect(() => {
+    if (props.signInError) {
+      setOpen(true);
+    }
+    else {
+      setOpen(false);
+    }
+  }, [props.signInError])
 
   function handleChange(event) {
     // A way to handle multiple inputs with hooks
@@ -139,7 +147,7 @@ function SignInSide(props) {
             >
               Sign In
             </Button>
-            <Snackbar open={props.signInError} anchorOrigin={{ vertical: "bottom", horizontal: "right" }}>
+            <Snackbar open={open} anchorOrigin={{ vertical: "bottom", horizontal: "right" }}>
               <Alert severity="error">
                 {props.signInError}
               </Alert>

@@ -66,8 +66,13 @@ module.exports = {
 
 		let product = new Product(data)
 		product.images = [files.filename]
+		console.log("product:", product);
 
 		await product.save()
+		
+		const items = await allItems(req.user)
+		console.log("returning items: ", items)
+		return res.json(items)
 	},
 	async updateItem(req, res) {
 		console.log("updating id", req.params.id)

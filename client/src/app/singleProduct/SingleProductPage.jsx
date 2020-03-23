@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
     useParams
 } from 'react-router-dom'
@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     cardGrid: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     // },
     card: {
         height: '100%',
-        width:'100%',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
     },
@@ -42,24 +42,24 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const SingleProductPage = ({selectedProduct, setSelected, role, updateProductStatus, token, history}) => {
+const SingleProductPage = ({ selectedProduct, setSelected, role, updateProductStatus, token, history }) => {
     const classes = useStyles()
-    const {id} = useParams()
+    const { id } = useParams()
     useEffect(() => {
         setSelected(id, token)
-    },[])
-    console.log("single props:",selectedProduct)
+    }, [])
+    console.log("single props:", selectedProduct)
 
-    if (!selectedProduct){
+    if (!selectedProduct) {
         return <Typography component="h2" variant="h2" align="center" >
             No Product Found
         </Typography>
     }
 
-    let img = selectedProduct.images[0]?`http://localhost:3000/api/images/${selectedProduct.images[0]}`:"https://source.unsplash.com/random"
+    let img = selectedProduct.images[0] ? `http://localhost:3000/api/images/${selectedProduct.images[0]}` : "https://source.unsplash.com/random"
 
     const setPending = (id) => {
-        console.log("setting pending" , id)
+        console.log("setting pending", id)
         updateProductStatus(id, token, 0)
         history.push("/")
     }
@@ -69,50 +69,50 @@ const SingleProductPage = ({selectedProduct, setSelected, role, updateProductSta
         let setPendingButton
         if (role === 'admin' || role === 'shopkeeper')
             setPendingButton = <Button variant="contained" size="large" color="secondary" onClick={e => setPending(id)}>Set Pending</Button>
-        else 
-        setPendingButton = ""
+        else
+            setPendingButton = ""
 
         return (<div>
-                {setPendingButton}
-                <Link to={`/buy/${id}`}>
-                    <Button variant="contained" size="large" color="primary">
-                        Buy
+            {setPendingButton}
+            <Link to={`/buy/${id}`}>
+                <Button variant="contained" size="large" color="primary">
+                    Buy
                     </Button>
-                </Link>
-             </div>)
+            </Link>
+        </div>)
 
     }
 
     return (
-     <div>
-         <Container className={classes.cardGrid}>
-        <Grid  container alignItems="center" justify="center">
-         <Grid item key={selectedProduct._id} xs={10}>
-             <Paper elevation={3}>
-                <Card  className={classes.card}>
-                    <CardMedia
-                        className={classes.cardMedia}
-                        image={img}
-                        title="Image title"
-                    />
-                    <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {selectedProduct.name}
-                        </Typography>
-                        <Typography>
-                            {selectedProduct.description}
-                            </Typography>
-                    </CardContent>
-                    <CardActions>
-                       <Buttons></Buttons>
-                    </CardActions>
-                </Card>
-                </Paper>
+        <div>
+            <Container className={classes.cardGrid}>
+                <Grid container alignItems="center" justify="center">
+                    <Grid item key={selectedProduct._id} xs={10}>
+                        <Paper elevation={3}>
+                            <Card className={classes.card}>
+                                <CardMedia
+                                    className={classes.cardMedia}
+                                    image={img}
+                                    title="Image title"
+                                />
+                                <CardContent className={classes.cardContent}>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        {selectedProduct.name}
+                                    </Typography>
+                                    <Typography>
+                                        {selectedProduct.description}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Buttons></Buttons>
+                                </CardActions>
+                            </Card>
+                        </Paper>
+                    </Grid>
                 </Grid>
-        </Grid>       
-        </Container>
+            </Container>
 
-     </div>   
+        </div>
     )
 }
 
