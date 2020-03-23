@@ -18,6 +18,7 @@ import AddProductPageContainer from './addproduct/AddProductPageContainer'
 import AdminPageContainer from './adminPage/AdminPageContainer'
 import SingleProductPageContainer from './singleProduct/singleProductPageContainer'
 import BuyPageContainer from './buypage/buyPageContainer'
+import TransactionsPageContainer from './transactionspage/TransactionPageContainer'
 import {
   BrowserRouter as Router,
   Switch,
@@ -79,7 +80,7 @@ function App(props) {
 
   const ToolbarStyles = {
     display: "grid",
-    gridTemplateColumns: "5% 10% auto 30% auto 20%"
+    gridTemplateColumns: "5% 10% auto 30% auto 30%"
   }
 
   const refresh = () => {
@@ -90,10 +91,23 @@ function App(props) {
   let buttons;
   if (props.token) {
     let adminBtn
+    let bougthProductsBtn
     if (props.role === 'admin')
       adminBtn = <GoToAdmin adminPage={props.adminPage} />
+
+    if (props.user_bought_products.length > 0){
+      bougthProductsBtn = (
+        <Link to="/transactions">
+          <Button variant="outlined" size="medium" >Transactions</Button>
+        </Link>
+      )
+    }else {
+      bougthProductsBtn = ""
+    }
+
     buttons = (
       <div>
+        {bougthProductsBtn}
         {adminBtn}
          <Link to="/add">
             <Button onClick={e => props.addPage()} variant="outlined" size="medium">
@@ -152,6 +166,8 @@ function App(props) {
           <Route path="/add" component={AddProductPageContainer} >
           </Route>
           <Route path="/product/:id" component={SingleProductPageContainer}>
+          </Route>
+          <Route path="/transactions" component={TransactionsPageContainer}>
           </Route>
           <Route path="/buy/:id" component={BuyPageContainer}/>
           <Route path="/" component={FrontpageContainer}>

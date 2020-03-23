@@ -23,7 +23,8 @@ const mapStateToProps = (state) => {
         searchBar
     } = state.page
     const {
-        products
+        products,
+        user_bought_products
     } = state.products
 
     return {
@@ -32,7 +33,8 @@ const mapStateToProps = (state) => {
         id,
         page,
         searchBar,
-        products
+        products,
+        user_bought_products
     };
 };
 
