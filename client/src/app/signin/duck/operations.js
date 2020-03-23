@@ -4,7 +4,7 @@ import jwt from 'jwt-decode'
 function signIn(email, password, history) {
     return dispatch => {
         dispatch(creators.requestSignIn());
-        return fetch("http://localhost:3000/api/users/login", {
+        return fetch("/api/users/login", {
                 method: "POST",
                 headers: new Headers({
                     "Content-Type": "application/json",

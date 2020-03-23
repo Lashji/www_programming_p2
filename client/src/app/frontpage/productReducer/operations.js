@@ -3,11 +3,11 @@ import creators from "./actions";
 const getProducts = (token) => {
     return dispatch => {
         dispatch(creators.requestProducts())
-        return fetch("http://localhost:3000/api/products/", {
-                headers: {
-                    'Authorization': token,
-                },
-            })
+        return fetch("/api/products/", {
+            headers: {
+                'Authorization': token,
+            },
+        })
             .then(response => {
                 console.log("response", response)
                 if (!response.ok) {
@@ -56,16 +56,16 @@ const updateProductStatus = (id, token, state) => {
     console.log("update product", id, token, state)
     return dispatch => {
         dispatch(creators.requestProducts())
-        return fetch("http://localhost:3000/api/products/" + id, {
-                method: "PUT",
-                headers: {
-                    'Authorization': token,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    state: state
-                })
+        return fetch("/api/products/" + id, {
+            method: "PUT",
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                state: state
             })
+        })
             .then(res => {
                 if (!res.ok) {
                     throw Error(res.statusText)
@@ -82,12 +82,12 @@ const deleteProduct = (id, token) => {
     console.log("deleting product", id)
     return dispatch => {
         dispatch(creators.requestProducts())
-        fetch("http://localhost:3000/api/products/" + id, {
-                method: "DELETE",
-                headers: {
-                    'Authorization': token
-                }
-            })
+        fetch("/api/products/" + id, {
+            method: "DELETE",
+            headers: {
+                'Authorization': token
+            }
+        })
             .then(res => {
                 if (!res.ok) {
                     throw Error(res.statusText)
@@ -99,23 +99,37 @@ const deleteProduct = (id, token) => {
     }
 }
 
-const setSelectedProduct = (id) => {
-    console.log("Setting selected", id)
+const setSelectedProduct = (id, token) => {
+
     return dispatch => {
-        dispatch(creators.receiveSingle(id))
+        fetch("/api/products/" + id, {
+            headers: {
+                'Authorization': token
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw Error(res.statusText);
+                }
+                return res.json();
+            })
+            .then(json => {
+                dispatch(creators.receiveSingle(json));
+            })
+            .catch(err => console.log("error when selecting product", err))
     }
 }
 
 const postProduct = (data, token) => {
     return dispatch => {
         dispatch(creators.requestProducts())
-        return fetch("http://localhost:3000/api/products/", {
-                method: "POST",
-                headers: {
-                    "Authorization": token,
-                },
-                body: data
-            })
+        return fetch("/api/products/", {
+            method: "POST",
+            headers: {
+                "Authorization": token,
+            },
+            body: data
+        })
             .then(res => {
                 if (!res.ok) {
                     throw Error(res.statusText)
@@ -133,17 +147,17 @@ const buyProduct = (userID, productID, token) => {
 
     return dispatch => {
         dispatch(creators.requestProducts)
-        return fetch("http://localhost:3000/api/buy/" + productID, {
-                method: "PUT",
-                headers: {
-                    "Authorization": token,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    userID,
-                    productID
-                })
+        return fetch("/api/buy/" + productID, {
+            method: "PUT",
+            headers: {
+                "Authorization": token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                userID,
+                productID
             })
+        })
             .then(res => {
                 if (!res.ok)
                     throw Error(res.statusText)

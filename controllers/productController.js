@@ -12,15 +12,15 @@ mongoose.connection.once("open", function () {
 
 const allItems = async (user) => {
 	let items = await Product.find({
-			state: 1
-		})
+		state: 1
+	})
 		.exec()
 
 	if (user) {
 		console.log("user id", user._id)
 		let foundUser = await User.findOne({
-				_id: user._id
-			}).populate('bought_products')
+			_id: user._id
+		}).populate('bought_products')
 			.exec()
 
 		console.log("foundUser", foundUser)
@@ -48,11 +48,11 @@ module.exports = {
 		// console.log("return items", items)
 		res.json(items)
 	},
-	showItem(req, res) {
-		let id = req.params.id
-		res.json({
-			id: id
-		})
+	async showItem(req, res) {
+		let id = req.params.id;
+		let product = await Product.findById(id);
+		console.log(product);
+		res.json(product);
 	},
 	async saveItem(req, res) {
 		console.log("saving item")

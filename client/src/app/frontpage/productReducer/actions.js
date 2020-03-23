@@ -31,10 +31,10 @@ const requestSingle = () => {
     }
 }
 
-const receiveSingle = (id) => {
+const receiveSingle = (json) => {
     return {
         type: types.RECEIVE_SINGLE,
-        id: id
+        product: json
     }
 }
 

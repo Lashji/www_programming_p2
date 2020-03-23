@@ -45,7 +45,9 @@ const useStyles = makeStyles(theme => ({
 const SingleProductPage = ({selectedProduct, setSelected, role, updateProductStatus, token, history}) => {
     const classes = useStyles()
     const {id} = useParams()
-    setSelected(id)
+    useEffect(() => {
+        setSelected(id, token)
+    },[])
     console.log("single props:",selectedProduct)
 
     if (selectedProduct === undefined){

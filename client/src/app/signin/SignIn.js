@@ -139,7 +139,7 @@ function SignInSide(props) {
             >
               Sign In
             </Button>
-            <Snackbar open={open} onClick={e => setOpen(true)} onClose={e => setOpen(false)} anchorOrigin={{ vertical: "bottom", horizontal: "right" }}>
+            <Snackbar open={props.signInError} anchorOrigin={{ vertical: "bottom", horizontal: "right" }}>
               <Alert severity="error">
                 {props.signInError}
               </Alert>

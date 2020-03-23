@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const AddProductPage = (props)=> {
+const AddProductPage = (props) => {
 
     if (!props.token)
         props.history.push("/")
@@ -55,12 +55,12 @@ const AddProductPage = (props)=> {
 
     const handleFiles = (e) => {
         console.log("handling files", e)
-      setFiles(e)
+        setFiles(e)
     }
-  
+
     const classes = useStyles();
 
-    const handleSubmit= (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         console.log("handling submit", e.target)
@@ -73,86 +73,86 @@ const AddProductPage = (props)=> {
         data.append("keywords", keywords)
         data.append("description", description)
         data.append("image", files[0])
-        
+
         props.postProduct(data, props.token)
-        
+
         props.history.push("/")
     }
 
-   
 
-    return ( 
-    <div>
-    <React.Fragment>
-        <CssBaseline />
-        <main>
-            <Container className={classes.cardGrid} maxWidth="md">
-                <Grid container spacing={4}>
-            <Typography variant="h6" gutterBottom>
-            Add New Product
-            </Typography>
-                <form onSubmit={e => handleSubmit(e)}>
-            <Grid container spacing={3}>
-                <Grid item xs={12} sm={12}>
-                    <TextField
-                    onChange={e => setName(e.target.value)}
-                    required
-                    id="Name"
-                    name="Name"
-                    label="Product Name"
-                    fullWidth
-                    />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                    <TextField
-                    onChange={e => setCategory(e.target.value)}
-                    required
-                    id="Category"
-                    name="Product Category"
-                    label="Product Category"
-                    fullWidth
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                    onChange={e => setPrice(e.target.value)}
-                    id="price"
-                    name="price"
-                    label="Product Price"
-                    fullWidth
-                    type="number"
-                    required
-                    />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                    <TextField
-                    onChange={e => setKeywords(e.target.value)}
-                    id="keywords"
-                    name="keywords"
-                    label="Product keywords"
-                    fullWidth
-                    />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                    <TextField onChange={e => setDescription(e.target.value)} id="description" name="description" label="Product Description" fullWidth />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                    <Typography variant="h6" gutterBottom>
-                    Add Image
-                    </Typography>
-                    <DropzoneArea handleChange={handleFiles} />
-                </Grid>
-                
-                <Grid item xs={12} >
-                    <Button type="submit" fullWidth variant="contained" color="primary">Submit</Button>
-                </Grid>
-                </Grid>
-                </form>
-                </Grid>
-            </Container>
-            
-        </main>
-      </React.Fragment></div>)
+
+    return (
+        <div>
+            <React.Fragment>
+                <CssBaseline />
+                <main>
+                    <Container className={classes.cardGrid} maxWidth="md">
+                        <Grid container spacing={4}>
+                            <Typography variant="h6" gutterBottom>
+                                Add New Product
+                            </Typography>
+                            <form onSubmit={e => handleSubmit(e)}>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} sm={12}>
+                                        <TextField
+                                            onChange={e => setName(e.target.value)}
+                                            required
+                                            id="Name"
+                                            name="Name"
+                                            label="Product Name"
+                                            fullWidth
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12}>
+                                        <TextField
+                                            onChange={e => setCategory(e.target.value)}
+                                            required
+                                            id="Category"
+                                            name="Product Category"
+                                            label="Product Category"
+                                            fullWidth
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            onChange={e => setPrice(e.target.value)}
+                                            id="price"
+                                            name="price"
+                                            label="Product Price"
+                                            fullWidth
+                                            type="number"
+                                            required
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12}>
+                                        <TextField
+                                            onChange={e => setKeywords(e.target.value)}
+                                            id="keywords"
+                                            name="keywords"
+                                            label="Product keywords"
+                                            fullWidth
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12}>
+                                        <TextField onChange={e => setDescription(e.target.value)} id="description" name="description" label="Product Description" fullWidth />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12}>
+                                        <Typography variant="h6" gutterBottom>
+                                            Add Image
+                                        </Typography>
+                                        <DropzoneArea handleChange={handleFiles} />
+                                    </Grid>
+
+                                    <Grid item xs={12} >
+                                        <Button type="submit" fullWidth variant="contained" color="primary">Submit</Button>
+                                    </Grid>
+                                </Grid>
+                            </form>
+                        </Grid>
+                    </Container>
+
+                </main>
+            </React.Fragment></div>)
 }
 
 

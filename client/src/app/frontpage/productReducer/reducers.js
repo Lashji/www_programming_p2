@@ -13,13 +13,6 @@ const INITIAL_STATE = {
 
 function productReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
-        case types.REQUEST_PRODUCTS: {
-            return Object.assign({}, state, {
-                ...state,
-                isFetching: true,
-                didInvalidate: false
-            })
-        }
         case types.RECEIVE_PRODUCTS: {
             return Object.assign({}, state, {
                 ...state,
@@ -50,7 +43,7 @@ function productReducer(state = INITIAL_STATE, action) {
                 ...state,
                 isFetching: false,
                 didInvalidate: false,
-                selectedProduct: state.products.find(i => i._id === action.id)
+                selectedProduct: action.product
             })
         }
         case types.ERROR: {

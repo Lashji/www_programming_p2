@@ -1,7 +1,7 @@
 import {connect } from 'react-redux'
 
 import AdminPage from './AdminPage'
-import {productOperations} from '../frontpage/productReducer/'
+import {productOperations} from '../frontpage/productReducer'
 
 const mapStateToProps= state => {   
     const {pending_products} = state.products

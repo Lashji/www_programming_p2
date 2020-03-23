@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom'
 
 const Product = ({product, classes}) => {
-    let img = product.images[0]?`http://localhost:3000/api/images/${product.images[0]}`:"https://source.unsplash.com/random"
+    let img = product.images[0]?`/api/images/${product.images[0]}`:"https://source.unsplash.com/random"
     return (
         <Grid item key={product._id} xs={12} sm={6} md={4}>
             <Link style={{textDecoration: 'none'}} to={`/product/${product._id}`}>
