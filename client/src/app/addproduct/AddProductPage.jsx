@@ -72,7 +72,9 @@ const AddProductPage = (props) => {
         data.append("sale_price", price)
         data.append("keywords", keywords)
         data.append("description", description)
-        data.append("image", files[0])
+        files.forEach(image => {
+            data.append("image", image);
+        })
 
         props.postProduct(data, props.token)
 

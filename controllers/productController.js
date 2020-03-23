@@ -57,20 +57,18 @@ module.exports = {
 	async saveItem(req, res) {
 		console.log("saving item")
 		const data = req.body
-		const files = req.file
+		const files = req.files
 
 		console.log("files: ", files)
 
 		console.log("saving item, body=", data)
-		data.offer_price = data.sale_price * 1.24
+		data.offer_price = Math.round(data.sale_price * 1.24*100)/100
 
 		let product = new Product(data)
-		if (files) {
-			product.images = [files.filename]
-		}
-		else {
-			product.images = []
-		}
+		product.images = []
+		files.forEach(file => {
+			product.images.push(file.filename)
+		})
 		console.log("product:", product);
 
 		await product.save()

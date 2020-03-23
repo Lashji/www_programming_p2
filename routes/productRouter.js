@@ -12,7 +12,7 @@ const upload = require("../middleware/processImg")
 router.use("/", auth.passUser)
 router.get("/", ProductController.listItems)
 router.get("/:id", ProductController.showItem) //TODO: Add Regex for id 
-router.post("/", upload.single("image"), ProductController.saveItem)
+router.post("/", upload.array("image"), ProductController.saveItem)
 router.put("/:id", ProductController.updateItem)
 router.delete("/:id", ProductController.deleteItem)
 module.exports = router
