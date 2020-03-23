@@ -50,7 +50,7 @@ const SingleProductPage = ({selectedProduct, setSelected, role, updateProductSta
     },[])
     console.log("single props:",selectedProduct)
 
-    if (selectedProduct === undefined){
+    if (!selectedProduct){
         return <Typography component="h2" variant="h2" align="center" >
             No Product Found
         </Typography>
