@@ -65,11 +65,16 @@ module.exports = {
 		data.offer_price = data.sale_price * 1.24
 
 		let product = new Product(data)
-		product.images = [files.filename]
+		if (files) {
+			product.images = [files.filename]
+		}
+		else {
+			product.images = []
+		}
 		console.log("product:", product);
 
 		await product.save()
-		
+
 		const items = await allItems(req.user)
 		console.log("returning items: ", items)
 		return res.json(items)
